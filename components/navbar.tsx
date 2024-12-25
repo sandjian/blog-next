@@ -1,103 +1,75 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "./ui/button";
-import { client } from "@/lib/client";
-import Buscador from "./search";
-import MenuMobile from "./ui/menu-mobile";
+'use client';
 
-export const dynamic = "auto",
-  fetchCache = "auto",
-  revalidate = 10;
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import MenuMobile from './ui/menu-mobile';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import HyperText from './ui/hyper-text';
 
-export default async function Navbar() {
-  const response = await client.getEntries({
-    content_type: "blog",
-  });
+const NAV_LINKS = [
+  { href: '/', label: 'Lobby' },
+  { href: '/publicaciones', label: 'Publicaciones' },
+  { href: '/about-me', label: 'Conócenos' },
+  { href: '/contacto', label: 'Contáctanos' },
+];
 
-  const posts = response.items;
+const SOCIAL_LINKS = [
+  { href: 'https://instagram.com', icon: FaInstagram, label: 'Instagram' },
+  { href: 'https://facebook.com', icon: FaFacebookF, label: 'Facebook' },
+  { href: 'https://twitter.com', icon: FaTwitter, label: 'Twitter' },
+  { href: 'https://linkedn.com', icon: FaLinkedinIn, label: 'Twitter' },
+];
+
+export default function Navbar() {
+  const pathname = usePathname();
 
   return (
-    <>
-      {/* Navbar en pantallas grandes */}
-      <nav className="flex justify-between items-center max-lg:hidden p-10 max-w-7xl mx-auto w-full">
-        <ul className="flex space-x-4 justify-start items-center">
-          <li>
-            <Link href="/">
-              <Image
-                src="/BLOG.png"
-                alt="Logo"
-                width={120}
-                height={100}
-                className="mr-8 invert"
-              />
+    <nav className="flex items-center justify-between px-8 py-4 lg:px-12 max-w-7xl mx-auto">
+      <Link href="/">
+        <HyperText
+          className="text-5xl font-semibold bg-clip-text text-transparent bg-slate-300"
+          text="BLOG."
+        />
+      </Link>
+        
+      <ul className="hidden lg:flex space-x-8">
+  
+          
+        {NAV_LINKS.map(({ href, label }) => (
+          <li key={href} className="relative after:absolute after:bg-neutral-400 after:-bottom-1 after:left-0 after:h-[1px]  after:w-full after:origin-bottom-right after:scale-x-0  hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-500">
+            <Link
+              href={href}
+              className={`transition-all ${pathname === href
+                  ? 'text-white font-semibold'
+                  : 'text-slate-400  hover:font-semibold'
+                }`}
+            >
+              {label}
             </Link>
-          </li>
-          <li>
-            <Button variant="ghost">
-              <Link href="/" className="hover:font-semibold">
-                Lobby
-              </Link>
-            </Button>
-          </li>
-          <li>
-            <Button variant="ghost">
-              <Link href="/about-me" className="hover:font-semibold">
-                About me
-              </Link>
-            </Button>
-          </li>
-          <li>
-            <Button variant="ghost">
-              <Link href="/entradas" className="hover:font-semibold">
-                Publicaciones
-              </Link>
-            </Button>
-          </li>
-          <li>
-            <Button variant="ghost">
-              <Link href="/categorias" className="hover:font-semibold">
-                Categorías
-              </Link>
-            </Button>
-          </li>
-          <li>
-            <Button variant="ghost">
-              <Link href="/contacto" className="hover:font-semibold">
-                Contacto
-              </Link>
-            </Button>
-          </li>
-        </ul>
-        <div className="flex gap-4">
-          <Buscador posts={posts} />
-        </div>
-      </nav>
 
-      {/* Navbar en pantallas pequeñas */}
-      <nav className="hidden max-lg:flex items-center p-4">
-        {/* Logo alineado a la izquierda */}
-        <div className="flex-1">
-          <Link href="/">
-            <Image
-              src="/BLOG.png"
-              alt="Logo"
-              width={130}
-              height={100}
-              className="p-4 invert"
-            />
+          </li>
+        ))}
+      
+      </ul>
+
+      <div className="hidden lg:flex items-center space-x-4">
+        {SOCIAL_LINKS.map(({ href, icon: Icon, label }) => (
+          <Link
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-400 hover:text-white transition-all"
+            aria-label={label}
+          >
+            <Icon size={22} />
           </Link>
-        </div>
+        ))}
+      </div>
 
-        {/* Buscador centrado */}
-        <div className="hidden md:flex-1 md:flex justify-center">
-          <Buscador posts={posts} />
-        </div>
-
-        {/* ThemeSwitcher y menú hamburguesa alineados a la derecha */}
-        <div className="flex-1 flex items-center justify-end gap-4">
-          <MenuMobile />
-        </div>
-      </nav>
-    </>
+      <div className="lg:hidden">
+        <MenuMobile />
+      </div>
+    </nav>
   );
 }
