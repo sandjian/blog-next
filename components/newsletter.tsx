@@ -1,49 +1,17 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import { CalendarDaysIcon, HandHeartIcon } from "lucide-react";
 import { AnimatedSubscribeButtonDemo } from "./ui/animated-subscribe-button";
 import { BackgroundBeams } from "./ui/background-beams";
 
-// Variantes para contenedor (animación de entrada general).
-const containerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      when: "beforeChildren",
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-// Variantes para elementos hijos (fade-in escalonado).
-const childVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
 
 export function Newsletter() {
   return (
     <div className="relative isolate overflow-hidden rounded-2xl py-12 sm:py-16 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-800">
       <BackgroundBeams />
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Contenedor animado principal */}
-        <motion.div
-          className="mx-auto grid grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {/* Bloque de suscripción */}
-          <motion.div className="max-w-xl lg:max-w-lg" variants={childVariants}>
+        <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+          <div className="max-w-xl lg:max-w-lg" >
             <h2 className="text-4xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-white font-sans font-bold">
               ¡Mantente al día con nosotros!
             </h2>
@@ -66,13 +34,9 @@ export function Newsletter() {
               />
               <AnimatedSubscribeButtonDemo />
             </div>
-          </motion.div>
+          </div>
 
-          {/* Bloque de "beneficios" (Weekly articles, No spam, etc.) */}
-          <motion.dl
-            className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2"
-            variants={childVariants}
-          >
+          <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
             <div className="flex flex-col items-start">
               <div className="rounded-2xl bg-white p-2 ring-1 ring-white/10">
                 <CalendarDaysIcon
@@ -103,8 +67,8 @@ export function Newsletter() {
                 valiosa y nunca compartiremos tus datos con terceros.
               </dd>
             </div>
-          </motion.dl>
-        </motion.div>
+          </dl>
+        </div>
       </div>
     </div>
   );
