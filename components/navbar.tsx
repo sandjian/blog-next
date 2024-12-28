@@ -24,7 +24,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center justify-between px-8 py-4 lg:px-12 max-w-7xl mx-auto">
+    <nav className="flex items-center justify-between px-12 py-4 lg:px-12 max-w-7xl mx-auto">
       <Link href="/">
         <HyperText
           className="text-5xl font-semibold bg-clip-text text-transparent bg-slate-300"

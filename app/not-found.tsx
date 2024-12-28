@@ -1,7 +1,7 @@
 export default function NotFound() {
     return (
       
-        <main className="grid min-h-full items-center  px-6 py-24 sm:py-32 lg:px-8">
+        <section className="grid min-h-full items-center  px-6 py-24 sm:py-32 lg:px-8">
           <div className="text-center">
             <p className="text-4xl font-semibold text-orange-600">404</p>
             <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-slate-300 sm:text-7xl">
@@ -22,7 +22,7 @@ export default function NotFound() {
               </a>
             </div>
           </div>
-        </main>
+        </section>
     )
   }
   

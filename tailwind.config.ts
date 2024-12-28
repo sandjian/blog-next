@@ -77,6 +77,7 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		animation: {
+			aurora: "aurora 60s linear infinite",
   			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
   			meteor: 'meteor 5s linear infinite',
   			shine: 'shine var(--duration) infinite linear',
@@ -86,6 +87,14 @@ const config: Config = {
 			shimmer: "shimmer 2s linear infinite",
   		},
   		keyframes: {
+			aurora: {
+				from: {
+				  backgroundPosition: "50% 50%, 50% 50%",
+				},
+				to: {
+				  backgroundPosition: "350% 50%, 350% 50%",
+				},
+			  },
   			'border-beam': {
   				'100%': {
   					'offset-distance': '100%'

@@ -31,9 +31,8 @@ export default async function KnowledgeArticlePage({
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center max-w-7xl p-24">
-      <section className="w-full">
-        {/* PRIMER DIV */}
+    <section className="flex min-h-screen flex-col items-center justify-center max-w-7xl w-full p-24">
+      
         <div className="bg-slate-800/80 rounded-2xl p-6 pb-20 max-w-7xl container space-y-12 px-4 md:px-6">
         <div className="flex justify-start items-center">
             <BackButton/>
@@ -72,7 +71,6 @@ export default async function KnowledgeArticlePage({
             </div>
           </div>
         </div>
-      </section>
-    </main>
+    </section>
   )
 }

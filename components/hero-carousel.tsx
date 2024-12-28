@@ -14,7 +14,7 @@ type Props = {
 
 export default function HeroCarousel({ posts }: Props) {
   return (
-    <section className="max-w-7xl mx-auto z-20">
+    <section className="max-w-7xl w-full mx-auto z-20">
       <Carousel
         className="rounded-2xl flex justify-center items-center w-full"
         plugins={[

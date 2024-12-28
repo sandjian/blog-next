@@ -30,7 +30,7 @@ export default function ArticlesList({ articles }: ArticlesListProps) {
   const currentArticles = articles.slice(startIndex, endIndex);
 
   return (
-    <div className="w-full max-w-7xl mx-auto pt-12 p-4 sm:p-6 md:pt-10 lg:px-2">
+    <div className="w-full max-w-7xl mx-auto pt-12 md:pt-10">
       <h2 className="text-3xl font-bold text-slate-100 relative mb-8">
         Nuestros articulos
         <span className="absolute -bottom-5 left-0 h-2 w-20 bg-orange-500 rounded-full"></span>
@@ -47,7 +47,7 @@ export default function ArticlesList({ articles }: ArticlesListProps) {
 
           return (
             <CardContainer key={article.sys.id} className="inter-var w-full rounded-2xl">
-              <CardBody className="relative group/card hover:shadow-2xl hover:shadow-slate-900/[0.8] bg-gradient-to-bl from-slate-800 via-slate-700 to-slate-700 w-full h-auto rounded-2xl p-8">
+              <CardBody className="relative group/card hover:shadow-2xl border border-slate-500 hover:shadow-slate-900/[0.8] bg-gradient-to-bl from-slate-800 via-slate-700 to-slate-700 w-full h-auto rounded-2xl p-8">
                 <CardItem translateZ="50" className="text-xl h-20 font-bold text-neutral-100">
                   {article.title}
                 </CardItem>

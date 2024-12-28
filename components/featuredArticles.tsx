@@ -8,7 +8,7 @@ export default async function FeaturedArticles() {
   const articles = await getLastThreeArticles()
 
   return (
-    <div className="w-full max-w-7xl mx-auto pt-12 p-4 sm:p-6 md:pt-10 lg:px-2">
+    <div className="w-full max-w-7xl mx-auto pt-12">
       
       <h2 className="text-3xl font-bold text-slate-100 relative mb-8">
         Articulos destacados

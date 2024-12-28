@@ -79,7 +79,7 @@ Nuestro objetivo es unir conocimiento, inspirar curiosidad y motivar el aprendiz
 
       {/* Contenido principal: Texto generado + Testimonios */}
       <motion.div
-        className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center rounded-2xl max-w-7xl mx-auto gap-8"
+        className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center rounded-2xl max-w-7xl mx-auto w-full gap-8 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-800 p-4"
         variants={cardVariants}
         initial="offscreen"
         whileInView="onscreen"
