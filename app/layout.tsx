@@ -5,7 +5,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+import { FooterSection } from "@/components/footer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400"] });
 
@@ -24,13 +25,20 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          "antialiased bg-gradient-to-t from-slate-800 via-slate-900 to-slate-950",
+          "antialiased bg-background",
           
         )}
-      >
+      ><ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      
         <Navbar />
-        <main>{children}</main>
-        <Footer />
+          {children}
+        <FooterSection />
+    </ThemeProvider>
       </body>
     </html>
   );

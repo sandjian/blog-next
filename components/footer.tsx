@@ -1,62 +1,128 @@
+"use client";
+
+import * as React from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import {  Moon, Send, Sun } from "lucide-react";
 import Link from "next/link";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+const SocialLinks = [
+  { href: 'https://instagram.com', icon: FaInstagram, label: 'Instagram' },
+  { href: 'https://facebook.com', icon: FaFacebookF, label: 'Facebook' },
+  { href: 'https://twitter.com', icon: FaTwitter, label: 'Twitter' },
+  { href: 'https://linkedn.com', icon: FaLinkedinIn, label: 'LinkedIn' }, // Corrected label
+];
 
-export default function Footer() {
-  
 
-  const navigationLinks = [
-    { name: "Inicio", href: "/" },
-    { name: "Publicaciones", href: "/entradas" },
-    { name: "Conocenos", href: "/about-me" },
-    { name: "Contacto", href: "/contacto" },
-  ];
 
-  const socialLinks = [
-    { icon: FaFacebookF, href: "https://facebook.com" },
-    { icon: FaTwitter, href: "https://twitter.com" },
-    { icon: FaInstagram, href: "https://instagram.com" },
-    { icon: FaLinkedinIn, href: "https://linkedin.com" },
-  ];
-
+function FooterSection() {
   return (
-    <footer className="pt-24  text-gray-400 py-8 px-8 mx-auto max-w-7xl">
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <footer className="relative border-t  text-foreground transition-colors duration-300 pt-20 w-full max-w-7xl m-auto">
+      <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div className="relative">
+            <div className="flex  items-center">
 
-        <div className="flex flex-col space-y-4">
-          <h2 className="text-lg text-slate-400 font-semibold">Navegación</h2>
-          <ul className="space-y-2">
-            {navigationLinks.map((link) => (
-              <li key={link.name}>
-                <Link href={link.href} className="hover:font-extrabold hover:text-white transition-colors">
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="flex flex-col space-y-4">
-          <h2 className="text-lg text-slate-400 font-semibold">Conéctate con nosotros</h2>
-          <div className="flex space-x-4">
-            {socialLinks.map((social, index) => (
-              <Link href={social.href} key={index} className="hover:text-white transition-colors" target="_blank">
-                <social.icon className="w-5 h-5" />
-              </Link>
-            ))}
+              <h2 className="mb-4 text-3xl font-semibold text-foreground tracking-tight">
+                <span className="bg-primary p-1.5 rounded-2xl text-primary-foreground">Blog</span> Connected
+              </h2>
+            </div>
+            <p className="mb-6 text-foreground/60">
+              Join our newsletter for the latest updates and exclusive offers.
+            </p>
+            <form className="relative">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="pr-12 backdrop-blur-sm bg-neutral-200 dark:bg-neutral-800 rounded-2xl border-border"
+              />
+              <Button
+                type="submit"
+                size="icon"
+                className="absolute right-1 top-1 h-8 w-8 rounded-full bg-primary-DEFAULT text-primary-foreground transition-transform hover:scale-105"
+              >
+                <Send className="h-4 w-4 text-accent" />
+                <span className="sr-only">Subscribe</span>
+              </Button>
+            </form>
+          </div>
+          <div>
+            <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
+            <nav className="space-y-2 text-sm">
+              <a href="/" className="block transition-colors hover:text-primary">
+                Home
+              </a>
+              <a href="/about-us" className="block transition-colors hover:text-primary">
+                About Us
+              </a>
+              <a href="/categories" className="block transition-colors hover:text-primary">
+                Categories
+              </a>
+              <a href="/authors" className="block transition-colors hover:text-primary">
+                Authors
+              </a>
+              <a href="/search" className="block transition-colors hover:text-primary">
+                All Posts
+              </a>
+            </nav>
+          </div>
+          <div>
+            <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
+            <address className="space-y-2 text-sm not-italic">
+              <p>123 Innovation Street</p>
+              <p>Tech City, TC 12345</p>
+              <p>Phone: (123) 456-7890</p>
+              <p>Email: hello@example.com</p>
+            </address>
+          </div>
+          <div className="relative">
+            <h3 className="mb-4 text-lg font-semibold">Follow Us</h3>
+            <div className="mb-6 flex space-x-4">
+            {SocialLinks.map(({ href, icon: Icon, label }) => (
+          <Link
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground hover:text-primary dark:hover:text-accent transition-all"
+            aria-label={label}
+          >
+            <Icon size={20} />
+          </Link>
+        ))}
+            </div>
+            <div className="flex items-center space-x-2">
+              <Sun className="h-4 w-4" />
+              <Switch />
+              <Moon className="h-4 w-4" />
+              <Label htmlFor="dark-mode" className="sr-only">
+                Toggle dark mode
+              </Label>
+            </div>
           </div>
         </div>
-
-        <div className="flex flex-col space-y-4">
-          <h2 className="text-lg text-slate-400 font-semibold">Créditos</h2>
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} Mi Aplicación. Todos los derechos reservados.
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row">
+          <p className="text-sm text-foreground/60">
+            © 2025 Alejandro Sandjian. All rights reserved.
           </p>
-          <p className="text-sm">
-            Desarrollado con ❤️ por <span className="font-bold">Alejandro Sandjian</span>.
-          </p>
+          <nav className="flex gap-4 text-sm">
+            <a href="#" className="transition-colors hover:text-primary-DEFAULT">
+              Privacy Policy
+            </a>
+            <a href="#" className="transition-colors hover:text-primary-DEFAULT">
+              Terms of Service
+            </a>
+            <a href="#" className="transition-colors hover:text-primary-DEFAULT">
+              Cookie Settings
+            </a>
+          </nav>
         </div>
       </div>
     </footer>
   );
 }
+
+export { FooterSection };

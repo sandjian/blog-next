@@ -26,7 +26,7 @@ export default function Pagination({
   if (totalPages <= 1) return null 
 
   return (
-    <div className="flex items-center justify-center mt-8 gap-2 ">
+    <div className="flex items-center justify-center mt-8 mb-12 gap-2 bg-neutral-200 dark:bg-neutral-800 rounded-2xl p-2 ">
       <button
         onClick={() => handlePageClick(currentPage - 1)}
         disabled={currentPage === 1}
@@ -34,12 +34,13 @@ export default function Pagination({
           flex items-center gap-1
           px-3 py-2 
           rounded-2xl 
-          border border-gray-500
-          bg-slate-700
-          text-gray-200 
+          bg-neutral-200 dark:bg-neutral-800
+          dark:hover:bg-neutral-700
+          text-foreground 
           disabled:opacity-50
-          hover:bg-slate-600
+          hover:bg-neutral-300
           transition-colors
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-accent
         "
       >
         <ChevronLeft className="w-4 h-4" />
@@ -51,7 +52,7 @@ export default function Pagination({
           return (
             <span
               key={index}
-              className="px-3 py-2 text-gray-200 select-none"
+              className="px-3 py-2 text-primary select-none"
             >
               ...
             </span>
@@ -66,12 +67,12 @@ export default function Pagination({
             className={`
               flex items-center justify-center
               px-5 py-2 rounded-2xl w-3 h-9
-              border border-gray-400
+              
               transition-colors
               ${
                 isActive
-                  ? "bg-orange-600/90 text-slate-200 cursor-default"
-                  : "bg-slate-700 text-slate-200 hover:bg-slate-600"
+                  ? "bg-primary text-primary-foreground cursor-default "
+                  : "bg-neutral-200 dark:bg-neutral-700 text-foreground hover:border-1 hover:border-primary dark:hover:bg-neutral-600 border-neutral-300"
               }
             `}
           >
@@ -87,12 +88,13 @@ export default function Pagination({
           flex items-center gap-1
           px-3 py-2 
           rounded-2xl 
-          border border-gray-500
-          bg-slate-700
-          text-gray-200 
+          bg-neutral-200 dark:bg-neutral-800
+          text-foreground 
           disabled:opacity-50
-          hover:bg-slate-600
+          hover:bg-neutral-300
+          dark:hover:bg-neutral-700
           transition-colors
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background
         "
       >
         <span className="text-sm font-medium">Siguiente</span>

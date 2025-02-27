@@ -1,10 +1,40 @@
 import { Document } from "@contentful/rich-text-types";
 
+const AUTHOR_GRAPHQL_FIELDS = `
+  sys { id }
+  name
+  profilePicture { url }
+  role
+  description
+  socialLinks
+`;
+
+
+const SIMPLE_ARTICLE_GRAPHQL_FIELDS = `
+  sys { id }
+  title
+  slug
+  sumary
+  date
+  author { ${AUTHOR_GRAPHQL_FIELDS} }
+  categoryName
+  articleImage { url }
+  tags
+`;
+
+
+
+export interface Author {
+  sys: { id: string };
+  name: string;
+  profilePicture: { url: string };
+  role?: string;
+  description?: string;
+  socialLinks?: { [key: string]: string | undefined };
+}
 
 export interface Article {
-  sys: {
-    id: string;
-  };
+  sys: { id: string };
   title: string;
   slug: string;
   sumary?: string;
@@ -13,9 +43,7 @@ export interface Article {
     links?: {
       assets?: {
         block?: {
-          sys: {
-            id: string;
-          };
+          sys: { id: string };
           url: string;
           description: string;
         }[];
@@ -23,52 +51,32 @@ export interface Article {
     };
   };
   date: string;
-  authorName?: string;
+  author: Author; // Usamos la referencia a Author
   categoryName?: string;
-  articleImage: {
-    url: string;
-  };
+  articleImage: { url: string };
+  tags?: string[];
 }
-
 
 interface ContentfulResponse<T> {
   data?: {
-    knowledgeArticleCollection?: {
-      items: T[];
-    };
+    knowledgeArticleCollection?: { items: T[] };
+    authorCollection?: { items: T[] }; // Añadido para consultas de autores
   };
   errors?: Array<{ message: string }>;
 }
 
 const ARTICLE_GRAPHQL_FIELDS = `
-  sys {
-    id
-  }
+  sys { id }
   title
   slug
   sumary
-  detail {
-    json
-    links {
-      assets {
-        block {
-          sys {
-            id
-          }
-          url
-          description
-        }
-      }
-    }
-  }
+  detail { json links { assets { block { sys { id } url description } } } }
   date
-  authorName
+  author { ${AUTHOR_GRAPHQL_FIELDS} }
   categoryName
-  articleImage {
-    url
-  }
+  articleImage { url }
+  tags
 `;
-
 
 function getContentfulApiAndToken(isPreview: boolean): { url: string; token: string } {
   const spaceId = process.env.CONTENTFUL_SPACE_ID;
@@ -85,11 +93,6 @@ function getContentfulApiAndToken(isPreview: boolean): { url: string; token: str
   };
 }
 
-/**
- * @param query     
- * @param preview   
- * @param variables 
- */
 export async function fetchGraphQL<T>(
   query: string,
   preview: boolean = false,
@@ -105,7 +108,6 @@ export async function fetchGraphQL<T>(
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ query, variables }),
-
       next: { tags: ["articles"] },
     });
 
@@ -134,10 +136,16 @@ function extractArticleEntries(fetchResponse: ContentfulResponse<Article>): Arti
   return fetchResponse.data.knowledgeArticleCollection.items;
 }
 
+function extractAuthorEntries(fetchResponse: ContentfulResponse<Author>): Author[] {
+  if (!fetchResponse?.data?.authorCollection?.items) {
+    console.error("No se recibieron datos de autores de Contentful.");
+    return [];
+  }
+  return fetchResponse.data.authorCollection.items;
+}
 
-export async function getLastThreeArticles(
-  isDraftMode: boolean = false
-): Promise<Article[]> {
+// Consultas de artículos
+export async function getLastThreeArticles(isDraftMode: boolean = false): Promise<Article[]> {
   const query = `
     query getLastThreeArticles($preview: Boolean!) {
       knowledgeArticleCollection(limit: 3, preview: $preview, order: date_DESC) {
@@ -147,35 +155,53 @@ export async function getLastThreeArticles(
       }
     }
   `;
-
-  const response = await fetchGraphQL<Article>(query, isDraftMode, {
-    preview: isDraftMode,
-  });
+  const response = await fetchGraphQL<Article>(query, isDraftMode, { preview: isDraftMode });
   return extractArticleEntries(response);
 }
 
-export async function getAllArticles(limit: number = 10, skip: number = 0): Promise<Article[]> {
+export async function getLastSixArticles(isDraftMode: boolean = false): Promise<Article[]> {
   const query = `
-    query getAllArticles($limit: Int!, $skip: Int!) {
-      knowledgeArticleCollection(limit: $limit, skip: $skip, order: date_DESC) {
+    query getLastSixArticles($preview: Boolean!) {
+      knowledgeArticleCollection(limit: 6, preview: $preview, order: date_DESC) {
         items {
           ${ARTICLE_GRAPHQL_FIELDS}
         }
       }
     }
   `;
-
-  const response = await fetchGraphQL<Article>(query, false, {
-    limit,
-    skip,
-  });
+  const response = await fetchGraphQL<Article>(query, isDraftMode, { preview: isDraftMode });
   return extractArticleEntries(response);
 }
 
-export async function getArticle(
-  slug: string,
-  isDraftMode: boolean = false
-): Promise<Article | undefined> {
+export async function getLastSevenArticles(isDraftMode: boolean = false): Promise<Article[]> {
+  const query = `
+    query getLastSevenArticles($preview: Boolean!) {
+      knowledgeArticleCollection(limit: 8, preview: $preview, order: date_DESC) {
+        items {
+          ${ARTICLE_GRAPHQL_FIELDS}
+        }
+      }
+    }
+  `;
+  const response = await fetchGraphQL<Article>(query, isDraftMode, { preview: isDraftMode });
+  return extractArticleEntries(response);
+}
+
+export async function getAllArticles(): Promise<Article[]> {
+  const query = `
+    query getAllArticles {
+      knowledgeArticleCollection(limit: 50, order: date_DESC) {
+        items {
+          ${SIMPLE_ARTICLE_GRAPHQL_FIELDS}
+        }
+      }
+    }
+  `;
+  const response = await fetchGraphQL<Article>(query, false);
+  return extractArticleEntries(response);
+}
+
+export async function getArticle(slug: string, isDraftMode: boolean = false): Promise<Article | undefined> {
   const query = `
     query getArticleBySlug($slug: String!, $preview: Boolean!) {
       knowledgeArticleCollection(where: { slug: $slug }, limit: 1, preview: $preview) {
@@ -185,11 +211,113 @@ export async function getArticle(
       }
     }
   `;
-
-  const response = await fetchGraphQL<Article>(query, isDraftMode, {
-    slug,
-    preview: isDraftMode,
-  });
-
+  const response = await fetchGraphQL<Article>(query, isDraftMode, { slug, preview: isDraftMode });
   return extractArticleEntries(response)[0];
+}
+
+// Consultas de categorías
+export async function getCategoriesWithCount(): Promise<{ name: string; count: number }[]> {
+  const query = `
+    query GetCategoriesWithCount {
+      knowledgeArticleCollection {
+        items {
+          categoryName
+        }
+      }
+    }
+  `;
+  const response = await fetchGraphQL<Article>(query);
+  const articles = extractArticleEntries(response);
+
+  const categoryCounts = articles.reduce((acc, article) => {
+    const category = article.categoryName || "Uncategorized";
+    acc[category] = (acc[category] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+
+  return Object.entries(categoryCounts)
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+}
+
+// Consultas de autores
+export async function getArticlesByAuthorName(
+  authorName: string,
+  limit: number = 10 // Límite por defecto
+): Promise<Article[]> {
+  const query = `
+    query getArticlesByAuthorName($authorName: String!, $limit: Int!) {
+      knowledgeArticleCollection(where: { author: { name: $authorName } }, limit: $limit, order: date_DESC) {
+        items {
+          ${ARTICLE_GRAPHQL_FIELDS}
+        }
+      }
+    }
+  `;
+  const response = await fetchGraphQL<Article>(query, false, { authorName, limit });
+  return extractArticleEntries(response);
+}
+
+export async function getAllAuthors(): Promise<Author[]> {
+  const query = `
+    query GetAllAuthors {
+      authorCollection {
+        items {
+          ${AUTHOR_GRAPHQL_FIELDS}
+        }
+      }
+    }
+  `;
+  const response = await fetchGraphQL<Author>(query);
+  return extractAuthorEntries(response);
+}
+
+// Consulta de artículos por tag (opcional, añadida por completitud)
+export async function getArticlesByTag(tag: string, limit: number = 10, skip: number = 0): Promise<Article[]> {
+  const query = `
+    query getArticlesByTag($tag: String!, $limit: Int!, $skip: Int!) {
+      knowledgeArticleCollection(where: { tags_contains: $tag }, limit: $limit, skip: $skip, order: date_DESC) {
+        items {
+          ${ARTICLE_GRAPHQL_FIELDS}
+        }
+      }
+    }
+  `;
+  const response = await fetchGraphQL<Article>(query, false, { tag, limit, skip });
+  return extractArticleEntries(response);
+}
+
+
+
+
+export async function getTopTags(limit: number = 25): Promise<string[]> {
+  const query = `
+    query GetAllTags {
+      knowledgeArticleCollection(limit: 100) {
+        items {
+          tags
+        }
+      }
+    }
+  `;
+  const response = await fetchGraphQL<Article>(query);
+  const articles = extractArticleEntries(response);
+
+  // Contar la frecuencia de cada tag
+  const tagCounts = articles.reduce((acc, article) => {
+    if (article.tags) {
+      article.tags.forEach((tag) => {
+        acc[tag] = (acc[tag] || 0) + 1;
+      });
+    }
+    return acc;
+  }, {} as Record<string, number>);
+
+  // Ordenar por frecuencia y tomar los primeros 'limit' tags
+  const sortedTags = Object.entries(tagCounts)
+    .sort(([, countA], [, countB]) => countB - countA) // Orden descendente por conteo
+    .slice(0, limit)
+    .map(([tag]) => tag);
+
+  return sortedTags;
 }

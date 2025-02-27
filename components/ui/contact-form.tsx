@@ -10,13 +10,13 @@ export default function ContactForm() {
     <form
       action="#"
       method="POST"
-      className="mx-auto mt-16 max-w-7xl sm:mt-20 bg-gradient-to-b from-slate-800 via-slate-900 to-slate-800 rounded-2xl p-8"
+      className="mx-auto mt-16 max-w-7xl sm:mt-20 bg-neutral-200 dark:bg-neutral-800 rounded-2xl p-8"
     >
       <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
         <div>
           <label
             htmlFor="first-name"
-            className="block text-sm/6 font-semibold text-gray-300"
+            className="block text-sm/6 font-semibold text-foreground"
           >
             Nombre
           </label>
@@ -33,7 +33,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="last-name"
-            className="block text-sm/6 font-semibold text-gray-300"
+            className="block text-sm/6 font-semibold text-foreground"
           >
             Apellido
           </label>
@@ -50,7 +50,7 @@ export default function ContactForm() {
         <div className="sm:col-span-2">
           <label
             htmlFor="subject"
-            className="block text-sm/6 font-semibold text-gray-300"
+            className="block text-sm/6 font-semibold text-foreground"
           >
             Asunto
           </label>
@@ -67,7 +67,7 @@ export default function ContactForm() {
         <div className="sm:col-span-2">
           <label
             htmlFor="email"
-            className="block text-sm/6 font-semibold text-gray-300"
+            className="block text-sm/6 font-semibold text-foreground"
           >
             Email
           </label>
@@ -84,7 +84,7 @@ export default function ContactForm() {
         <div className="sm:col-span-2">
           <label
             htmlFor="message"
-            className="block text-sm/6 font-semibold text-gray-300"
+            className="block text-sm/6 font-semibold text-foreground"
           >
             Mensaje
           </label>
@@ -116,9 +116,9 @@ export default function ContactForm() {
               />
             </Switch>
           </div>
-          <Label className="text-sm/6 text-gray-300">
+          <Label className="text-sm/6 text-foreground">
             Acepto la{' '}
-            <a href="#" className="font-semibold text-orange-500">
+            <a href="#" className="font-semibold text-primary">
               política de privacidad
             </a>
             .
@@ -126,7 +126,7 @@ export default function ContactForm() {
         </Field>
       </div>
       <div className="mt-10">
-        <button className="inline-flex h-16 w-full items-center justify-center rounded-2xl  bg-black-100 text-slate-400 hover:text-slate-100 transition-colors hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+        <button className="inline-flex h-16 w-full items-center justify-center rounded-2xl  bg-primary text-slate-200  transition-colors hover:bg-accent focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
           Enviar ahora
         </button>
       </div>

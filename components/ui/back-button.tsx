@@ -2,13 +2,17 @@
 
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react"; 
+import { ArrowLeft } from "lucide-react";
 
 export default function BackButton() {
   const router = useRouter();
 
   function handleClick() {
-    router.back();
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/"); // Redirige a la página de inicio si no hay historial
+    }
   }
 
   return (
@@ -20,9 +24,9 @@ export default function BackButton() {
         flex items-center gap-2
         px-4 py-2
         rounded-xl
-        bg-slate-800
+        bg-primary
         text-white
-        hover:bg-slate-700
+        hover:bg-accent
         transition-colors
         duration-300
       "

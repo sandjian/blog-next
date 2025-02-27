@@ -17,3 +17,60 @@
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
+
+@layer base {
+  :root {
+    --background: 30, 85%, 98%;
+    --foreground: 47, 15%, 35%;
+    
+    --primary: 161, 43%, 20%; 
+    --primary-foreground: 30, 85%, 98%;
+    
+    --secondary: 30, 50%, 89%;
+    --secondary-foreground: 25, 57%, 54%;
+    
+    --accent: 15, 60%, 40%;
+    --accent-foreground: 30, 85%, 98%;
+
+    --destructive: 0, 84%, 60%;
+    --destructive-foreground: 0, 0%, 98%;
+    
+    --border: 47, 15%, 80%;
+    --input: 47, 15%, 90%;
+    --ring: 25, 57%, 40%;
+  }
+
+  .dark {
+    --background: 180, 10%, 9%;
+    --foreground: 42, 14%, 74%;
+    --primary: 161, 43%, 20%;
+    --primary-foreground: 42, 14%, 74%;
+    --secondary: 47, 15%, 25%;
+    --secondary-foreground: 30, 50%, 90%;
+    --accent: 42, 17%, 50%;
+    --accent-foreground: 30, 85%, 98%;
+  }
+}
+
+.carousel-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.7)
+  );
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+.animate-spin-slow {
+  animation: spin-slow 1.5s linear infinite;
+}

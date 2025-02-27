@@ -1,72 +1,57 @@
-'use client';
 
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import MenuMobile from './ui/menu-mobile';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-import HyperText from './ui/hyper-text';
+import { Switch } from './ui/switch';
+import Navigation from './ui/dropdown-navigation';
+import { getCategoriesWithCount } from '@/lib/api';
+import { Moon, Sun } from 'lucide-react';
 
-const NAV_LINKS = [
-  { href: '/', label: 'Lobby' },
-  { href: '/publicaciones', label: 'Publicaciones' },
-  { href: '/about-me', label: 'Conócenos' },
-  { href: '/contacto', label: 'Contáctanos' },
-];
-
-const SOCIAL_LINKS = [
+const SocialLinks = [
   { href: 'https://instagram.com', icon: FaInstagram, label: 'Instagram' },
   { href: 'https://facebook.com', icon: FaFacebookF, label: 'Facebook' },
   { href: 'https://twitter.com', icon: FaTwitter, label: 'Twitter' },
-  { href: 'https://linkedn.com', icon: FaLinkedinIn, label: 'Twitter' },
+  { href: 'https://linkedn.com', icon: FaLinkedinIn, label: 'LinkedIn' }, // Corrected label
 ];
 
-export default function Navbar() {
-  const pathname = usePathname();
-
+export default async function Navbar() {
+  const categoriesData = await getCategoriesWithCount();
+  const categories = categoriesData.map((cat) => cat.name)
   return (
-    <nav className="flex items-center justify-between px-12 py-4 lg:px-12 max-w-7xl mx-auto">
+    <nav className="flex items-center justify-between py-2 max-w-7xl mx-auto w-full px-4">
       <Link href="/">
-        <HyperText
-          className="text-5xl font-semibold bg-clip-text text-transparent bg-slate-300"
-          text="BLOG."
-        />
-      </Link>
-        
-      <ul className="hidden lg:flex space-x-8">
-  
-          
-        {NAV_LINKS.map(({ href, label }) => (
-          <li key={href} className="relative after:absolute after:bg-neutral-400 after:-bottom-1 after:left-0 after:h-[1px]  after:w-full after:origin-bottom-right after:scale-x-0  hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-500">
-            <Link
-              href={href}
-              className={`transition-all ${pathname === href
-                  ? 'text-white font-semibold'
-                  : 'text-slate-400  hover:font-semibold'
-                }`}
-            >
-              {label}
-            </Link>
+      <div className="flex justify-center items-center">
 
-          </li>
-        ))}
-      
-      </ul>
+              <h2 className=" text-3xl font-semibold text-foreground tracking-tight">
+                <span className="bg-primary p-1.5 rounded-2xl text-primary-foreground">Blog</span> Connected
+              </h2>
+            </div>
+      </Link>
+
+      <div className='hidden lg:block'>
+        <Navigation categories={categories} />
+      </div>
 
       <div className="hidden lg:flex items-center space-x-4">
-        {SOCIAL_LINKS.map(({ href, icon: Icon, label }) => (
+        {SocialLinks.map(({ href, icon: Icon, label }) => (
           <Link
             key={label}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-400 hover:text-white transition-all"
+            className="text-foreground hover:text-primary dark:hover:text-accent transition-all"
             aria-label={label}
           >
-            <Icon size={22} />
+            <Icon size={20} />
           </Link>
         ))}
-      </div>
+        <div className='flex items-center justify-center gap-x-2'>
 
+          <Sun className="h-4 w-4" />
+          <Switch />
+          <Moon className="h-4 w-4" />
+        </div>
+      </div>
       <div className="lg:hidden">
         <MenuMobile />
       </div>

@@ -14,7 +14,7 @@ export function AnimatedSubscribeButtonDemo() {
         key={isSubscribed ? "subscribed" : "subscribe"}
         onClick={() => setIsSubscribed(!isSubscribed)}
         initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1, backgroundColor: isSubscribed ? "#28a745" : "#FFA500" }}
+        animate={{ scale: 1, opacity: 1, backgroundColor: isSubscribed ? "#16a34a" : "#F97316" }}
         exit={{ scale: 0.8, opacity: 0 }}
         transition={{ duration: 0.4 }}
         className="relative flex items-center justify-center overflow-hidden rounded-2xl py-2 px-6 font-semibold text-white"
