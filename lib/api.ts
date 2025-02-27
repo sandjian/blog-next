@@ -148,7 +148,7 @@ function extractAuthorEntries(fetchResponse: ContentfulResponse<Author>): Author
 export async function getLastThreeArticles(isDraftMode: boolean = false): Promise<Article[]> {
   const query = `
     query getLastThreeArticles($preview: Boolean!) {
-      knowledgeArticleCollection(limit: 3, preview: $preview, order: date_DESC) {
+      knowledgeArticleCollection(limit: 2, preview: $preview, order: date_DESC) {
         items {
           ${ARTICLE_GRAPHQL_FIELDS}
         }
