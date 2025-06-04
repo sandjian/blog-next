@@ -88,7 +88,6 @@ export default function ContactPage() {
             <ContactForm />
           </motion.div>
 
-          {/* Bloques de "Recursos", "Soporte", "FAQ" con animación escalonada */}
           <motion.div
             className="divide-y divide-gray-200 dark:divide-neutral-800"
             variants={infoContainer}

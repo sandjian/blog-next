@@ -15,8 +15,8 @@ export default function VerticalCard({ article }: HorizontalCardProps) {
     : `author-${article.sys.id}`;
 
   return (
-    <div className="border-0 bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-2xl p-4 transition-all hover:shadow-lg">
-      {/* Imagen con efecto hover */}
+    <div className="border-0 bg-neutral-200  dark:transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] shadow-md rounded-2xl p-4 transition-all hover:shadow-lg">
+      
       <div className="overflow-hidden rounded-xl shadow-md mb-4 group">
         <Link href={`/search/${article.slug}`} target="_blank">
           <Image
@@ -45,7 +45,7 @@ export default function VerticalCard({ article }: HorizontalCardProps) {
           </Link>
         </h3>
 
-        {/* Divisor más elegante */}
+        
         <div className="w-1/2 h-0.5 bg-gradient-to-r from-primary via-accent to-transparent my-3 opacity-75" />
 
         <p className="text-sm text-foreground line-clamp-3 h-20">{article.sumary}</p>
@@ -64,7 +64,6 @@ export default function VerticalCard({ article }: HorizontalCardProps) {
           </div>
         )}
 
-        {/* Sección de autor, fecha y tiempo de lectura rediseñada */}
         <div className="flex flex-wrap gap-4 items-center text-sm text-foreground rounded-lg p-2">
           <div className="flex items-center gap-x-2">
             <UserIcon className="w-5 h-5 text-accent" />
@@ -88,7 +87,6 @@ export default function VerticalCard({ article }: HorizontalCardProps) {
           </div>
         </div>
 
-        {/* Botón "Read more" ocupando ancho completo */}
         <div className="mt-4">
           <Link
             href={`/search/${article.slug}`}

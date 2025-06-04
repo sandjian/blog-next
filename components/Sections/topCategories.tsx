@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default async function TopCategories() {
   const categories = await getCategoriesWithCount();
-  const topCategories = categories.slice(0, 5); // Tomar solo las 5 primeras categorías
+  const topCategories = categories.slice(0, 5); 
 
   return (
     <section className="w-full max-w-7xl mx-auto pt-8 px-4">
@@ -24,10 +24,10 @@ export default async function TopCategories() {
           {topCategories.map((category) => (
             <Link href={`/categories/${category.name}`} key={category.name}>
               <div
-                className="grid grid-cols-2 p-4 hover:border-2 hover:border-accent transition-colors bg-neutral-200 dark:bg-neutral-800 rounded-2xl mt-3"
+                className="grid grid-cols-2 p-4 hover:border-2 hover:border-accent transition-colors bg-neutral-200 dark:transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]  rounded-2xl mt-3"
               >
                 <div className="text-sm font-semibold text-foreground">{category.name}</div>
-                <div className="text-right text-primary font-semibold">
+                <div className="text-right text-primary dark:text-foreground font-semibold">
                   {category.count}
                   <span className="text-sm font-extralight italic text-foreground"> Posts</span>
                 </div>

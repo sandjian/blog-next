@@ -15,7 +15,7 @@ export default function SmallCard({ article }: SmallCardProps) {
     : `author-${article.sys.id}`;
 
   return (
-    <div className="border-0 bg-neutral-200 dark:bg-neutral-800 shadow-none rounded-2xl px-4 py-5 flex items-center">
+    <div className="border-0 bg-neutral-200 dark:transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] shadow-none rounded-2xl px-4 py-5 flex items-center">
       <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-2xl mr-4 relative">
         <Link href={`/search/${article.slug}`} target="_blank">
           <Image

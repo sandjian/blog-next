@@ -15,7 +15,7 @@ export default function ProfileCard({ author }: ProfileCardProps) {
     : `author-${author.sys.id}`;
 
   return (
-    <div className="border-0 bg-neutral-200 dark:bg-neutral-800 shadow-none rounded-2xl p-4 flex items-center">
+    <div className="border-0 bg-neutral-200 dark:transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] shadow-none rounded-2xl p-4 flex items-center">
       <div className="w-20 h-20 overflow-hidden rounded-full mr-4">
         <Link href={`/authors/${authorSlug}`}>
           <Image

@@ -6,7 +6,7 @@ export default async function HeroLobby (){
     const posts = await getLastThreeArticles();
     const allPosts = await getAllArticles();
     return(
-        <section className="h-full w-full">
+        <section className="h-full w-full mt-2 p-4">
             <HeroCarousel posts={posts}/>
             <Searcher posts={allPosts}/>
         </section>

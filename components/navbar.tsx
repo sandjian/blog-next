@@ -18,7 +18,7 @@ export default async function Navbar() {
   const categoriesData = await getCategoriesWithCount();
   const categories = categoriesData.map((cat) => cat.name)
   return (
-    <nav className="flex items-center justify-between py-2 max-w-7xl mx-auto w-full px-4">
+    <nav className="flex items-center justify-between py-2 mt-3 max-w-7xl mx-auto w-full px-4">
       <Link href="/">
       <div className="flex justify-center items-center">
 

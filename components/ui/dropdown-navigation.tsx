@@ -85,7 +85,7 @@ export default function Navigation({ categories }: NavigationProps) {
               {openMenu === navItem.label && navItem.subMenus && (
                 <div className="w-auto absolute left-0 top-full pt-2 z-50">
                   <motion.div
-                    className="bg-neutral-200 dark:bg-neutral-800 border border-border p-4 px-12 w-max"
+                    className="bg-neutral-200 dark:bg-neutral-800/80 border border-border p-4 px-12 w-max"
                     style={{ borderRadius: 16 }}
                     layoutId="menu"
                   >

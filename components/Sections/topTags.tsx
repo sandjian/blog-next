@@ -20,7 +20,7 @@ export default async function TopTags() {
           <div className="flex flex-wrap gap-3">
             {popularTags.map((tag, index) => (
               <Link href={`/tags/${tag.toLowerCase()}`} key={index}>
-                <div className="bg-neutral-200 dark:bg-neutral-800 px-4 py-3 rounded-2xl text-foreground font-medium hover:bg-primary dark:hover:bg-primary hover:text-primary-foreground transition-colors duration-200 cursor-pointer">
+                <div className="bg-neutral-200 dark:transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]  px-4 py-3 rounded-2xl text-foreground font-medium hover:bg-primary dark:hover:bg-primary hover:text-primary-foreground transition-colors duration-200 cursor-pointer">
                   #{tag.toLowerCase()}
                 </div>
               </Link>

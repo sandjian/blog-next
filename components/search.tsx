@@ -34,7 +34,7 @@ export default function Searcher({ posts }: Props) {
   };
 
   return (
-    <div className="mt-2 relative h-full w-full max-w-6xl rounded-2xl  bg-primary flex justify-center items-center mx-auto p-3 z-30">
+    <div className="mt-4 relative h-full w-full max-w-6xl rounded-2xl bg-primary   dark:transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] flex justify-center items-center mx-auto p-3 z-30">
       <div className="relative h-full w-full max-w-md mx-auto rounded-2xl">
         <div className="flex items-center space-x-2 px-3 py-2 shadow-lg  bg-neutral-200 dark:bg-neutral-800 rounded-xl">
           <SearchIcon className="w-5 h-5 text-primary dark:text-accent" />

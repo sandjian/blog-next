@@ -21,7 +21,8 @@ const SocialLinks = [
 function FooterSection() {
   return (
     <footer className="relative border-t  text-foreground transition-colors duration-300 pt-20 w-full max-w-7xl m-auto">
-      <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
+      
+      <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8 z-50">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="relative">
             <div className="flex  items-center">
@@ -49,7 +50,7 @@ function FooterSection() {
               </Button>
             </form>
           </div>
-          <div>
+          <div className="z-50">
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
             <nav className="space-y-2 text-sm">
               <a href="/" className="block transition-colors hover:text-primary">
@@ -69,7 +70,7 @@ function FooterSection() {
               </a>
             </nav>
           </div>
-          <div>
+          <div  className="z-50">
             <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
             <address className="space-y-2 text-sm not-italic">
               <p>123 Innovation Street</p>

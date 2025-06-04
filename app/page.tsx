@@ -10,29 +10,33 @@ import HeroLobby from "@/components/Sections/heroLobby";
 export default function Home() {
 
     return (
-        <main className="h-full w-full p-2">
-            <HeroLobby/>
+        <main className="w-full">
+            <div className="w-full relative m-auto">
 
-            <div className="w-full h-full max-w-7xl mx-auto  grid grid-cols-1 xl:grid-cols-3 gap-4"> {/* Contenedor y grid */}
-                <div className="col-span-2 "> {/* FeaturedPosts ocupa 2 columnas */}
-                    <FeaturedPosts />
+                
+                <HeroLobby />
+
+                <div className="w-full h-full max-w-7xl mx-auto  grid grid-cols-1 lg:grid-cols-3 gap-4"> 
+                    <div className="col-span-2 "> 
+                        <FeaturedPosts />
+                    </div>
+                    <div className="w-full  max-w-7xl mx-auto"> 
+                        <PopulerPosted />
+                    </div>
                 </div>
-                <div className="w-full  max-w-7xl mx-auto"> {/* PopulerPosted ocupa 1 columna */}
-                    <PopulerPosted />
+                <div className="w-full  h-full max-w-7xl mx-auto  py-8 grid grid-cols-1 lg:grid-cols-3 gap-4"> 
+                    <div className="col-span-2 ">
+                        <RecentlyPosted />
+                    </div>
+                    <div className="w-full  max-w-7xl mx-auto"> 
+                        <TopAuthors />
+                        <TopCategories />
+                        <InstagramFeed />
+                        <TopTags />
+                    </div>
                 </div>
             </div>
-            <div className="w-full  h-full max-w-7xl mx-auto  py-8 grid grid-cols-1 xl:grid-cols-3 gap-4"> {/* Contenedor y grid */}
-                <div className="col-span-2 "> {/* FeaturedPosts ocupa 2 columnas */}
-                <RecentlyPosted/>
-                </div>
-                <div className="w-full  max-w-7xl mx-auto"> {/* PopulerPosted ocupa 1 columna */}
-                    <TopAuthors />
-                    <TopCategories/>
-                    <InstagramFeed/>
-                    <TopTags/>
-                </div>
-            </div>
-            
+
         </main>
     );
 }
