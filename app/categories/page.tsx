@@ -8,48 +8,52 @@ export default async function CategoriesList() {
 
     const categories = await getCategoriesWithCount();
     return (
-        <main className="w-full h-full p-4">
-            <section className="w-full max-w-7xl mx-auto pt-8 pb-8">
-                <div className="relative isolate z-20 bg-primary flex flex-col items-center justify-center space-y-4 text-center mx-auto w-full max-w-7xl h-[28rem] rounded-2xl">
-
-                    <div className="space-y-2 z-50">
-                        <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-slate-50">
-                            Explora, Aprende y Comparte
+        <main className="relative w-full">
+            <section className="mx-auto w-full max-w-7xl p-4">
+                <div className="z-20 bg-orange-800/60  mx-auto w-full max-w-7xl p-2 h-[28rem] rounded-2xl">
+                    <div className="h-full relative rounded-2xl bg-orange-800/90 isolate flex flex-col items-center justify-center space-y-4 text-center mx-auto w-full">
+                        <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-accent-foreground">
+                            Explore, Learn, and Share
                         </h1>
-                        <p className="max-w-[900px] text-zinc-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                            Sumérgete en nuestros últimos artículos, descubre nuevas tendencias y mantente siempre a la vanguardia de la tecnología.
+                        <p className="max-w-[900px] text-zinc-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-accent-foreground">
+                            Dive into our latest articles, discover new trends, and always stay ahead of the curve
                         </p>
 
                     </div>
                 </div>
-                <div className="w-full h-full max-w-7xl mx-auto  grid grid-cols-1 xl:grid-cols-3 gap-4">
-                    <div className="col-span-2">
+                <div className="w-full h-full max-w-7xl mx-auto  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="col-span-1 w-full  mt-10 bg-neutral-100 dark:bg-neutral-900/70 rounded-2xl p-4 ">
 
-                        <div className="mt-20 mb-10">
-                            <h2 className="text-3xl font-bold text-foreground relative mb-8">
-                                <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-primary-foreground">All</span>
+                        <div className="mt-14 p-4">
+                            <h2 className="text-3xl font-bold text-foreground dark:text-accent-foreground relative mb-2">
+                                <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-accent-foreground">All</span>
                                 Categories
                             </h2>
                         </div>
 
                         <div className=" rounded-lg ">
                             <div className="grid grid-cols-2 p-4 ">
-                                <div className="font-semibold text-foreground">Category</div>
-                                <div className="font-semibold text-foreground text-right">Posts</div>
+                                <div className="font-semibold text-foreground dark:text-accent-foreground">Category</div>
+                                <div className="font-semibold text-foreground dark:text-accent-foreground text-right">Posts</div>
                             </div>
 
                             <div className="">
                                 {categories.map((category) => (
                                     <Link href={`/categories/${category.name}`} key={category.name}>
-                                        <div
 
-                                            className="grid grid-cols-2 p-4 px-6 max-w-4xl m-auto hover:border-2 hover:border-accent transition-colors bg-neutral-200 dark:bg-neutral-800 rounded-2xl mt-2"
-                                        >
-                                            <div className="text-sm text-foreground font-semibold">{category.name}</div>
-                                            <div className="text-right text-primary dark:text-accent font-semibold">
-                                                {category.count}
-                                                <span className='text-sm font-extralight italic text-foreground'> Posts</span>
+                                        <div className=" mt-3 p-1  hover:translate-x-2 bg-stone-200/50 dark:bg-neutral-900/50 transition-all duration-300 ease-in-out rounded-2xl">
+                                            <div className='grid grid-cols-2 p-4 rounded-2xl bg-stone-200 dark:bg-neutral-900 dark:hover:bg-neutral-700/70 transition-all duration-300 hover:bg-neutral-400/40'>
+
+                                                <div className="text-sm font-semibold text-foreground dark:text-accent-foreground">
+                                                    {category.name}
+                                                </div>
+
+                                                <div className="text-right text-primary dark:text-foreground font-semibold">
+                                                    {category.count}
+                                                    <span className="text-sm font-extralight italic text-foreground dark:text-accent-foreground"> Posts</span>
+                                                </div>
                                             </div>
+
                                         </div>
                                     </Link>
                                 ))}
@@ -57,10 +61,8 @@ export default async function CategoriesList() {
                         </div>
                         <TopTags />
                     </div>
-                    <PopulerPosted />
-                    <div className="col-span-2">
-
-
+                    <div className="mt-10 lg:col-span-2 bg-neutral-100 dark:bg-neutral-900/70 rounded-2xl p-4 ">
+                        <PopulerPosted />
                     </div>
                 </div>
             </section>

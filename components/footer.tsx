@@ -20,18 +20,18 @@ const SocialLinks = [
 
 function FooterSection() {
   return (
-    <footer className="relative border-t  text-foreground transition-colors duration-300 pt-20 w-full max-w-7xl m-auto">
+    <footer className="relative border-t  text-foreground dark:text-accent-foreground transition-colors duration-300 pt-20 w-full max-w-7xl m-auto">
       
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8 z-50">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="relative">
             <div className="flex  items-center">
 
-              <h2 className="mb-4 text-3xl font-semibold text-foreground tracking-tight">
-                <span className="bg-primary p-1.5 rounded-2xl text-primary-foreground">Blog</span> Connected
+              <h2 className="mb-4 text-3xl font-semibold text-foreground dark:text-accent-foreground tracking-tight">
+                <span className="bg-primary p-1.5 rounded-2xl text-accent-foreground">Blog</span> Connected
               </h2>
             </div>
-            <p className="mb-6 text-foreground/60">
+            <p className="mb-6 text-foreground dark:text-accent-foreground/60">
               Join our newsletter for the latest updates and exclusive offers.
             </p>
             <form className="relative">
@@ -43,7 +43,7 @@ function FooterSection() {
               <Button
                 type="submit"
                 size="icon"
-                className="absolute right-1 top-1 h-8 w-8 rounded-full bg-primary-DEFAULT text-primary-foreground transition-transform hover:scale-105"
+                className="absolute right-1 top-1 h-8 w-8 rounded-full bg-transparent hover:bg-transparent text-primary-foreground transition-transform hover:scale-105"
               >
                 <Send className="h-4 w-4 text-accent" />
                 <span className="sr-only">Subscribe</span>
@@ -52,20 +52,20 @@ function FooterSection() {
           </div>
           <div className="z-50">
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
-            <nav className="space-y-2 text-sm">
-              <a href="/" className="block transition-colors hover:text-primary">
+            <nav className="space-y-2 text-sm dark:text-neutral-300">
+              <a href="/" className="block transition-colors dark:hover:text-accent-foreground hover:text-accent hover:font-semibold">
                 Home
               </a>
-              <a href="/about-us" className="block transition-colors hover:text-primary">
+              <a href="/about-us" className="block transition-colors dark:hover:text-accent-foreground hover:text-accent hover:font-semibold">
                 About Us
               </a>
-              <a href="/categories" className="block transition-colors hover:text-primary">
+              <a href="/categories" className="block transition-colors dark:hover:text-accent-foreground hover:text-accent hover:font-semibold">
                 Categories
               </a>
-              <a href="/authors" className="block transition-colors hover:text-primary">
+              <a href="/authors" className="block transition-colors dark:hover:text-accent-foreground hover:text-accent hover:font-semibold">
                 Authors
               </a>
-              <a href="/search" className="block transition-colors hover:text-primary">
+              <a href="/search" className="block transition-colors dark:hover:text-accent-foreground hover:text-accent hover:font-semibold">
                 All Posts
               </a>
             </nav>
@@ -88,7 +88,7 @@ function FooterSection() {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground hover:text-primary dark:hover:text-accent transition-all"
+            className="text-foreground dark:text-accent-foreground hover:text-accent dark:hover:text-accent transition-all"
             aria-label={label}
           >
             <Icon size={20} />
@@ -106,17 +106,17 @@ function FooterSection() {
           </div>
         </div>
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row">
-          <p className="text-sm text-foreground/60">
+          <p className="text-sm text-foreground dark:text-accent-foreground/60">
             © 2025 Alejandro Sandjian. All rights reserved.
           </p>
           <nav className="flex gap-4 text-sm">
-            <a href="#" className="transition-colors hover:text-primary-DEFAULT">
+            <a href="#" className="transition-colors hover:text-accent-DEFAULT">
               Privacy Policy
             </a>
-            <a href="#" className="transition-colors hover:text-primary-DEFAULT">
+            <a href="#" className="transition-colors hover:text-accent-DEFAULT">
               Terms of Service
             </a>
-            <a href="#" className="transition-colors hover:text-primary-DEFAULT">
+            <a href="#" className="transition-colors hover:text-accent-DEFAULT">
               Cookie Settings
             </a>
           </nav>

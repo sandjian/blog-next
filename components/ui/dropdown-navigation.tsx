@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 interface NavigationProps {
-  categories: string[]; // O { name: string; count: number }[] si quieres usar el conteo
+  categories: string[]; 
 }
 
 export default function Navigation({ categories }: NavigationProps) {
@@ -43,10 +43,10 @@ export default function Navigation({ categories }: NavigationProps) {
             {navItem.link ? (
               <a
                 href={navItem.link}
-                className={`text-md py-1.5 px-4 flex cursor-pointer group transition-colors duration-300 items-center justify-center gap-1 relative ${
+                className={`text-sm py-1.5 px-4 flex cursor-pointer group transition-colors duration-300 items-center justify-center gap-1 relative ${
                   pathname === navItem.link
-                    ? "text-accent font-semibold dark:text-accent"
-                    : "text-foreground  hover:text-accent"
+                    ? "text-accent dark:text-accent-foreground font-semibold "
+                    : "text-foreground dark:text-neutral-300 dark:hover:text-accent-foreground hover:text-accent"
                 }`}
                 onMouseEnter={() => setIsHover(navItem.id)}
                 onMouseLeave={() => setIsHover(null)}
@@ -55,10 +55,10 @@ export default function Navigation({ categories }: NavigationProps) {
               </a>
             ) : (
               <button
-                className={`focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-2xl text-md py-1.5 px-4 flex cursor-pointer group transition-colors duration-300 items-center justify-center gap-1 relative ${
+                className={`focus-visible:outline-none text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-2xl text-md py-1.5 px-4 flex cursor-pointer group transition-colors duration-300 items-center justify-center gap-1 relative ${
                   openMenu === navItem.label
-                    ? "text-accent "
-                    : "text-foreground  hover:text-accent"
+                    ? "text-accent dark:text-accent-foreground"
+                    : "text-foreground dark:text-neutral-300 dark:hover:text-accent-foreground hover:text-accent"
                 }`}
                 onMouseEnter={() => setIsHover(navItem.id)}
                 onMouseLeave={() => setIsHover(null)}
@@ -85,7 +85,7 @@ export default function Navigation({ categories }: NavigationProps) {
               {openMenu === navItem.label && navItem.subMenus && (
                 <div className="w-auto absolute left-0 top-full pt-2 z-50">
                   <motion.div
-                    className="bg-neutral-200 dark:bg-neutral-800/80 border border-border p-4 px-12 w-max"
+                    className="bg-stone-200 dark:bg-neutral-900/95  p-4  w-max"
                     style={{ borderRadius: 16 }}
                     layoutId="menu"
                   >
@@ -97,10 +97,10 @@ export default function Navigation({ categories }: NavigationProps) {
                               <li key={item}>
                                 <a
                                   href={`/categories/${item.toLowerCase()}`}
-                                  className={`text-sm transition-colors duration-300 block px-2 py-1 font-semibold rounded-md ${
+                                  className={`text-sm transition-colors duration-300 block px-2 py-1  rounded-md ${
                                     pathname === `/categories/${item.toLowerCase()}`
                                       ? "text-foreground "
-                                      : "text-foreground hover:text-primary "
+                                      : "text-foreground hover:text-accent hover:font-semibold dark:hover:text-white "
                                   }`}
                                 >
                                   {item}

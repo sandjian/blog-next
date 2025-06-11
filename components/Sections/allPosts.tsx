@@ -25,15 +25,15 @@ export default function AllPosts({ posts }: PostsListProps) {
   const currentArticles = posts.slice(startIndex, endIndex);
 
   return (
-    <section className="w-full mx-auto pt-8 px-4">
+    <section className="w-full mx-auto pt-8 px-1">
       <div className="mt-20 mb-10">
-        <h2 className="text-3xl font-bold text-foreground relative mb-8">
-          <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-primary-foreground">All</span>
+        <h2 className="text-3xl font-bold text-foreground dark:text-accent-foreground relative mb-8">
+          <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-accent-foreground">All</span>
           Posts
         </h2>
       </div>
 
-      <div className="grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentArticles.map((article) => (
           <VerticalCard key={article.sys.id} article={article} />
         ))}

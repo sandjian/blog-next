@@ -25,7 +25,8 @@ export default function RootLayout({
       <body
         className={cn(
           outfit.className,
-          "antialiased bg-[background] overflow-x-hidden",
+          "antialiased overflow-x-hidden"
+      
           
         )}
       ><ThemeProvider

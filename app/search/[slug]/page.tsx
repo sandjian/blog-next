@@ -38,22 +38,22 @@ export default async function KnowledgeArticlePage({
 
   return (
 
-    <div className="w-full  h-full max-w-7xl mx-auto   grid grid-cols-1 xl:grid-cols-3 gap-4 pb-12"> {/* Contenedor y grid */}
-      <div className="col-span-2 "> {/* FeaturedPosts ocupa 2 columnas */}
-        <div className="flex h-full flex-col items-center justify-center mx-auto max-w-6xl w-full px-4 py-5">
+    <div className="w-full "> 
+      <div className="w-full max-w-7xl m-auto p-4 flex flex-col">
+        <div className="flex justify-start items-center w-full py-4 max-w-6xl m-auto">
+            <BackButton />
+        </div>
+        <div className=" grid grid-cols-1 lg:grid-cols-3 gap-x-4  justify-center mx-auto max-w-7xl w-full px-4 py-5">
 
-          <div className="bg-neutral-200 dark:bg-neutral-800 rounded-2xl p-6 pb-20 max-w-7xl container space-y-12 px-4 md:px-6">
-            <div className="flex justify-start items-center">
-              <BackButton />
-            </div>
+          <div className="transform-gpu col-span-2 py-14  bg-neutral-100 dark:bg-neutral-950/50  rounded-2xl">
 
             {/* Título y subtítulo */}
             <div className="space-y-4 p-4">
-            <div className="mb-2">
-              <Badge className="text-accent-foreground bg-accent rounded-[7px] p-1.5">
-                {article.categoryName}
-              </Badge>
-            </div>
+              <div className="mb-2">
+                <Badge className="text-accent-foreground bg-accent rounded-[7px] p-1.5">
+                  {article.categoryName}
+                </Badge>
+              </div>
               <h1 className="text-foreground text-4xl mt-6 font-bold tracking-tighter sm:text-5xl">
                 {article.title}
               </h1>
@@ -64,13 +64,15 @@ export default async function KnowledgeArticlePage({
 
 
             {/* Contenido principal (imagen + texto) */}
-            <div className="space-y-8 lg:space-y-10">
-            <div className="flex items-center gap-x-2">
-            <UserIcon className="w-5 h-5 text-accent" />
-            
-              {article.author.name || "Unknown Author"}
-            
-          </div>
+            <div className="space-y-8 lg:space-y-10 w-full p-6 ">
+              <div className="flex items-center gap-x-2">
+                <UserIcon className="w-5 h-5 text-accent" />
+
+                {article.author.name || "Unknown Author"}
+
+              </div>
+              <div className="w-full rounded-2xl">
+
               {article.articleImage && (
                 <Image
                   alt="Article Image"
@@ -80,19 +82,20 @@ export default async function KnowledgeArticlePage({
                   width={500}
                 />
               )}
+              </div>
               {article.tags && article.tags.length > 0 && (
-            <div className="mt-2 flex flex-wrap gap-2">
-              {article.tags.map((tag) => (
-                <Badge
-                  key={tag}
-                  variant="secondary"
-                  className="text-xs bg-primary hover:bg-neutral-800 dark:hover:bg-accent text-primary-foreground cursor-pointer"
-                >
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          )}
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {article.tags.map((tag) => (
+                    <Badge
+                      key={tag}
+                      variant="secondary"
+                      className="text-xs bg-primary hover:bg-neutral-800 dark:hover:bg-accent text-primary-foreground cursor-pointer"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )}
               <div className="space-y-4 md:space-y-6">
                 <div className="space-y-2">
                   {article.detail?.json && (
@@ -104,13 +107,25 @@ export default async function KnowledgeArticlePage({
               </div>
             </div>
           </div>
+          <div className="w-full max-w-7xl mx-auto flex flex-col gap-y-2">
+            {/* TopAuthors - Fourth variant of box-shadow */}
+            <div className=" bg-neutral-100 dark:bg-neutral-950/50 rounded-2xl">
+              <TopAuthors />
+            </div>
+            {/* TopCategories - Fifth variant of box-shadow */}
+            <div className=" bg-neutral-100 dark:bg-neutral-950/50 rounded-2xl">
+              <TopCategories />
+            </div>
+            {/* InstagramFeed - First variant (reused) */}
+            <div className=" bg-neutral-100 dark:bg-neutral-950/50 rounded-2xl">
+              <InstagramFeed />
+            </div>
+            {/* TopTags - Second variant (reused) */}
+            <div className=" bg-neutral-100 dark:bg-neutral-950/50 rounded-2xl">
+              <TopTags />
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="w-full  max-w-7xl mx-auto"> {/* PopulerPosted ocupa 1 columna */}
-        <TopAuthors />
-        <TopCategories />
-        <InstagramFeed />
-        <TopTags />
       </div>
     </div>
 

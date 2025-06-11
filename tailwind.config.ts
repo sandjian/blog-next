@@ -12,7 +12,9 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
+    extend: 
+    
+    {
       backgroundImage: {
       },
       boxShadow: {
@@ -23,6 +25,9 @@ const config: Config = {
           200:'#E8E2D8',
           800: '#343b39',
         } ,
+        green:{
+          800:'#1D483B'
+        },
 
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

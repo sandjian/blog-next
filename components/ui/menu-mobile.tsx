@@ -38,7 +38,7 @@ export default function MenuMobile() {
           <Switch />
           <Moon className="h-4 w-4" />
         </div>
-        <button onClick={toggleMenu} className="p-3 text-accent">
+        <button onClick={toggleMenu} className="p-3 text-accent dark:text-accent-foreground">
           <span className="text-2xl">☰</span>
         </button>
       </div>
@@ -53,40 +53,39 @@ export default function MenuMobile() {
           >
             <motion.div
               ref={menuRef}
-              className="w-1/2 max-w-xs h-full bg-gradient-to-t from-primary to-foreground dark:bg-gradient-to-t dark:from-primary dark:to-accent p-4 shadow-lg border-2 border-l border-neutral-600 rounded-l-2xl flex flex-col"
+              className="w-1/2 max-w-xs h-full bg-accent p-4 shadow-lg shadow-orange-700 border-2 border-l border-orange-600/70 rounded-l-3xl flex flex-col"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3 }}
             >
               <div className="flex justify-between items-center mb-8">
-              <Link href="/">
-      <div className="flex justify-center items-center">
+                <Link href="/">
+                  <div className="flex justify-center items-center">
 
-              <h2 className=" text-lg font-semibold text-primary-foreground tracking-tight">
-                <span className="bg-primary p-1.5 rounded-xl text-primary-foreground">Blog</span> Connected
-              </h2>
-            </div>
-      </Link>
+                    <h2 className=" text-lg font-semibold text-accent-foreground tracking-tight">
+                      <span className="bg-primary p-1.5 rounded-xl text-accent-foreground">Blog</span> Connected
+                    </h2>
+                  </div>
+                </Link>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-primary-foreground"
+                  className="text-accent-foreground"
                 >
                   ✕
                 </button>
               </div>
 
               <nav className="space-y-1 mb-4">
-                <h2 className="text-base font-semibold text-slate-400">Navegación</h2>
+                <h2 className="text-base font-semibold text-accent-foreground">Navegación</h2>
                 {navigationLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`relative flex items-center px-3 py-2 rounded-2xl  transition-colors  ${ 
-                      pathname === link.href
-                        ? "text-white bg-accent"
-                        : "text-slate-400 hover:bg-black/50"
+                    className={`relative flex items-center px-3 py-2 rounded-2xl  transition-colors  ${pathname === link.href
+                        ? "text-white bg-orange-800/70"
+                        : "text-accent-foreground hover:bg-black/30"
                       }`}
                   >
                     {link.icon && <link.icon className="mr-2 w-5 h-5" />}
@@ -104,10 +103,10 @@ export default function MenuMobile() {
                 ))}
               </nav>
 
-              <div className="border-t border-neutral-400 my-4"></div> 
+              <div className="border-t border-neutral-400 my-4"></div>
 
               <nav className="space-y-2 mb-4">
-                <h2 className="text-base font-semibold text-slate-400">Políticas</h2>
+                <h2 className="text-base font-semibold text-accent-foreground">Políticas</h2>
                 {policyLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -115,15 +114,15 @@ export default function MenuMobile() {
                     onClick={() => setIsOpen(false)}
                     className={`relative flex items-center px-3 py-2 rounded-2xl font-semibold transition-colors text-sm ${ // text-sm
                       pathname === link.href
-                        ? "text-white bg-accent"
-                        : "text-slate-400 hover:bg-black/50"
+                        ? "text-white bg-orange-800/70"
+                        : "text-accent-foreground hover:bg-black/50"
                       }`}
                   >
                     {link.icon && <link.icon className="mr-2 w-5 h-5" />}
                     {pathname === link.href && (
                       <motion.span
                         layoutId="underline"
-                        className="absolute left-0 bottom-0 h-[2px] w-full bg-primary-400"
+                        className="absolute left-0 bottom-0 h-[2px] w-full "
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.3 }}
@@ -134,7 +133,7 @@ export default function MenuMobile() {
                 ))}
               </nav>
 
-              <div className="border-t border-neutral-400 my-4"></div> 
+              <div className="border-t border-neutral-400 my-4"></div>
 
 
               <div className="flex justify-center space-x-4 mt-4 mb-4">
@@ -146,7 +145,7 @@ export default function MenuMobile() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span className="w-5 h-5 text-xl text-slate-400 hover:text-white">
+                    <span className="w-5 h-5 text-xl text-neutral-300 hover:text-white">
                       {social.icon}
                     </span>
                   </Link>

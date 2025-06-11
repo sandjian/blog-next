@@ -1,16 +1,17 @@
+import {  WhyChooseUsSection } from "@/components/Sections/AboutUsContent";
 import { CTA } from "@/components/Sections/CTA";
-import { AboutUsHero } from "@/components/Sections/heroAboutUs";
+import { Hero } from "@/components/Sections/heroAboutUs";
 import TeamSection from "@/components/Sections/ourTeam";
-import { LogosCompanies } from "@/components/Sections/logosMarquee";
+import { AboutUsPageData, WhyChooseUsAboutData } from "@/lib/constants";
 
 export default function AboutUs() {
-
+  const { hero } = AboutUsPageData;
     return (
         <main className="h-full w-full p-4">
-            <AboutUsHero/>
-            <LogosCompanies/>
-            <TeamSection/>
+            <Hero data={hero}/>
+                    <WhyChooseUsSection data={WhyChooseUsAboutData} />
             <CTA/>
+            <TeamSection/>
         </main>
     );
 }

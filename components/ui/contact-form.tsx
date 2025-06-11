@@ -10,7 +10,7 @@ export default function ContactForm() {
     <form
       action="#"
       method="POST"
-      className="mx-auto mt-16 max-w-7xl sm:mt-20 bg-neutral-200 dark:bg-neutral-800 rounded-2xl p-8"
+      className="mx-auto mt-16 max-w-7xl sm:mt-20 bg-stone-200 dark:bg-neutral-900 rounded-2xl p-8"
     >
       <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
         <div>
@@ -105,7 +105,7 @@ export default function ContactForm() {
               onChange={setAgreed}
               className={`group flex w-8 flex-none cursor-pointer rounded-full p-px
               ${agreed ? 'bg-orange-500' : 'bg-gray-200'} 
-               ring-1 ring-gray-900/5 transition-colors`}
+               ring-0  transition-colors`}
             >
               <span className="sr-only">Agree to policies</span>
               <span
@@ -118,10 +118,9 @@ export default function ContactForm() {
           </div>
           <Label className="text-sm/6 text-foreground">
             Acepto la{' '}
-            <a href="#" className="font-semibold text-primary">
+            <a href="#" className="font-semibold text-accent">
               política de privacidad
             </a>
-            .
           </Label>
         </Field>
       </div>

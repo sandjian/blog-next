@@ -9,10 +9,10 @@ export default function InstagramFeed() {
   }));
 
   return (
-    <section className="w-full max-w-7xl mx-auto pt-8 px-4">
-      <div className="mt-20 mb-10">
-        <h2 className="text-3xl font-bold text-foreground relative mb-8">
-          <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-primary-foreground">Instagram</span>
+    <section className="w-full max-w-7xl mx-auto py-8 px-4 ">
+      <div className="my-10">
+        <h2 className="text-3xl font-bold text-foreground  dark:text-accent-foreground relative mb-8">
+          <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-accent-foreground">Instagram</span>
           Posts
         </h2>
       </div>

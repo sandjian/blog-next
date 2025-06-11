@@ -15,7 +15,8 @@ export default function VerticalCard({ article }: HorizontalCardProps) {
     : `author-${article.sys.id}`;
 
   return (
-    <div className="border-0 bg-neutral-200  dark:transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] shadow-md rounded-2xl p-4 transition-all hover:shadow-lg">
+    <div className="w-full bg-stone-200/50 dark:bg-neutral-900/50 p-2 rounded-2xl">
+      <div className=" bg-stone-200  dark:bg-neutral-900  rounded-2xl p-4 transition-all hover:shadow-lg">
       
       <div className="overflow-hidden rounded-xl shadow-md mb-4 group">
         <Link href={`/search/${article.slug}`} target="_blank">
@@ -39,7 +40,7 @@ export default function VerticalCard({ article }: HorizontalCardProps) {
               </Link>
             </div>
           )}
-        <h3 className="text-lg font-semibold text-foreground leading-tight">
+        <h3 className="text-lg font-semibold dark:text-accent-foreground text-foreground leading-tight">
           <Link href={`/search/${article.slug}`} target="_blank" className="hover:underline line-clamp-2">
             {article.title}
           </Link>
@@ -48,14 +49,14 @@ export default function VerticalCard({ article }: HorizontalCardProps) {
         
         <div className="w-1/2 h-0.5 bg-gradient-to-r from-primary via-accent to-transparent my-3 opacity-75" />
 
-        <p className="text-sm text-foreground line-clamp-3 h-20">{article.sumary}</p>
+        <p className="text-sm dark:text-accent-foreground text-foreground line-clamp-3 h-20">{article.sumary}</p>
         {article.tags && article.tags.length > 0 && (
           <div className="mb-2 flex flex-wrap gap-2">
             {article.tags.map((tag) => (
               <Link href={`/tags/${tag.toLowerCase()}`} key={tag}>
                 <Badge
                   variant="secondary"
-                  className="text-xs bg-primary cursor-pointer hover:bg-neutral-800 dark:hover:bg-accent text-primary-foreground"
+                  className="text-xs bg-primary cursor-pointer hover:bg-neutral-800 dark:hover:bg-accent text-accent-foreground "
                 >
                   {tag}
                 </Badge>
@@ -64,7 +65,7 @@ export default function VerticalCard({ article }: HorizontalCardProps) {
           </div>
         )}
 
-        <div className="flex flex-wrap gap-4 items-center text-sm text-foreground rounded-lg p-2">
+        <div className="flex flex-wrap gap-4 items-center text-sm dark:text-accent-foreground text-foreground rounded-lg p-2">
           <div className="flex items-center gap-x-2">
             <UserIcon className="w-5 h-5 text-accent" />
             <Link href={`/authors/${authorSlug}`} className="hover:underline">
@@ -82,16 +83,16 @@ export default function VerticalCard({ article }: HorizontalCardProps) {
             </span>
           </div>
           <div className="flex items-center gap-x-2">
-            <WatchIcon className="w-5 h-5 text-accent" />
+            <WatchIcon className="w-5 h-5 text-accent" /> 
             <span>5 Min. To Read</span>
           </div>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4  rounded-2xl">
           <Link
             href={`/search/${article.slug}`}
             target="_blank"
-            className="inline-flex w-full justify-center items-center font-semibold text-primary-foreground bg-primary hover:bg-accent rounded-2xl px-4 py-2 transition-all duration-300 shadow-sm hover:shadow-md"
+            className="inline-flex w-full justify-center items-center font-semibold text-accent-foreground  bg-primary hover:bg-accent rounded-2xl px-4 py-2 transition-all duration-300 shadow-sm hover:shadow-md"
           >
             <span>Read more</span>
             <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
@@ -99,5 +100,7 @@ export default function VerticalCard({ article }: HorizontalCardProps) {
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
