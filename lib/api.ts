@@ -176,7 +176,7 @@ export async function getLastSixArticles(isDraftMode: boolean = false): Promise<
 export async function getLastSevenArticles(isDraftMode: boolean = false): Promise<Article[]> {
   const query = `
     query getLastSevenArticles($preview: Boolean!) {
-      knowledgeArticleCollection(limit: 8, preview: $preview, order: date_DESC) {
+      knowledgeArticleCollection(limit: 9, preview: $preview, order: date_DESC) {
         items {
           ${ARTICLE_GRAPHQL_FIELDS}
         }

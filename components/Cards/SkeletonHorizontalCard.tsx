@@ -1,4 +1,3 @@
-// components/Cards/SkeletonHorizontalCard.tsx
 export default function SkeletonHorizontalCard() {
     return (
       <div className="bg-neutral-200 dark:bg-neutral-800 shadow-none rounded-2xl p-6 animate-pulse">

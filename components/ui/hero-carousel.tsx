@@ -14,7 +14,7 @@ type Props = {
 
 export default function HeroCarousel({ posts }: Props) {
   return (
-    <section className="max-w-7xl w-full mx-auto z-20 ">
+    <div className="max-w-7xl w-full mx-auto z-20 ">
       <Carousel
         className="rounded-2xl flex justify-center items-center w-full"
         plugins={[
@@ -38,7 +38,7 @@ export default function HeroCarousel({ posts }: Props) {
                   <CardContent className="relative z-10 flex flex-col justify-center items-start  gap-y-4">
                     <div className="flex gap-2 ">
                       {post.categoryName && (
-                        <Badge className="text-white bg-accent p-1.5 rounded-[7px]">
+                        <Badge className="text-white bg-accent hover:bg-orange-700/80 dark:bg-neutral-600 dark:hover:bg-neutral-500 p-1.5 rounded-[7px]">
                           {post.categoryName.charAt(0).toUpperCase() +
                             post.categoryName.slice(1)}
                         </Badge>
@@ -68,7 +68,7 @@ export default function HeroCarousel({ posts }: Props) {
           ))}
         </CarouselContent>
       </Carousel>
-    </section>
+    </div>
   );
 }
  

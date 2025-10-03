@@ -1,8 +1,7 @@
-// components/AllPosts.tsx
 'use client';
 
 import React from "react";
-import VerticalCard from "../Cards/VerticalCard"; 
+import VerticalCard from "../Cards/VerticalCard";
 import Pagination from "../pagination";
 import { Article } from "@/lib/api";
 
@@ -27,8 +26,8 @@ export default function AllPosts({ posts }: PostsListProps) {
   return (
     <section className="w-full mx-auto pt-8 px-1">
       <div className="mt-20 mb-10">
-        <h2 className="text-3xl font-bold text-foreground dark:text-accent-foreground relative mb-8">
-          <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-accent-foreground">All</span>
+        <h2 className="text-3xl font-bold text-primary dark:text-white relative mb-8">
+          <span className="bg-primary dark:bg-accent mr-2 px-2 py-3 rounded-xl text-accent-foreground">All</span>
           Posts
         </h2>
       </div>

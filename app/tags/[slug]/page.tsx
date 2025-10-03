@@ -1,4 +1,3 @@
-// app/tags/[slug]/page.tsx
 import { Suspense } from "react";
 import VerticalCard from "@/components/Cards/VerticalCard";
 import SkeletonVerticalCard from "@/components/Cards/SkeletonVerticalCard";
@@ -23,8 +22,8 @@ export default async function TagPage({ params }: Params) {
   return (
     <section className="w-full mx-auto pb-12 max-w-6xl p-4">
       <div className="mt-20 mb-10">
-        <h2 className="text-3xl font-bold text-foreground relative mb-8">
-          <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-primary-foreground">
+<h2 className="text-3xl font-bold text-primary dark:text-white relative mb-8">
+          <span className="bg-primary dark:bg-accent mr-2 px-2 py-3 rounded-xl text-accent-foreground">
             Search for
           </span>
           {displayTagName}

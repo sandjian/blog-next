@@ -34,7 +34,7 @@ export default function Pagination({
           flex items-center gap-1
           px-3 py-2 
           rounded-2xl 
-          bg-neutral-200 dark:bg-neutral-800
+          bg-neutral-50 dark:bg-neutral-800
           dark:hover:bg-neutral-700
           text-foreground 
           disabled:opacity-50
@@ -72,7 +72,7 @@ export default function Pagination({
               ${
                 isActive
                   ? "bg-primary text-primary-foreground cursor-default "
-                  : "bg-neutral-200 dark:bg-neutral-700 text-foreground hover:border-1 hover:border-primary dark:hover:bg-neutral-600 border-neutral-300"
+                  : "bg-neutral-50 dark:bg-neutral-700 text-foreground hover:border-1 hover:border-primary dark:hover:bg-neutral-600 border-neutral-300"
               }
             `}
           >
@@ -88,7 +88,7 @@ export default function Pagination({
           flex items-center gap-1
           px-3 py-2 
           rounded-2xl 
-          bg-neutral-200 dark:bg-neutral-800
+          bg-neutral-50 dark:bg-neutral-800
           text-foreground 
           disabled:opacity-50
           hover:bg-neutral-300

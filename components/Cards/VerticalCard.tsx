@@ -1,4 +1,3 @@
-// components/Cards/VerticalCard.tsx
 import { Article } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,9 +15,8 @@ export default function VerticalCard({ article }: VerticalCardProps) {
 
   return (
     <div className="w-full bg-stone-200/50 dark:bg-neutral-900/50 p-2 rounded-2xl">
-      <div className=" bg-stone-200  dark:bg-neutral-900  rounded-2xl p-4 transition-all hover:shadow-lg">
-        {/* Imagen con efecto hover */}
-        <div className="overflow-hidden rounded-xl shadow-md mb-4 group">
+      <div className="bg-stone-200 dark:bg-neutral-900 rounded-2xl p-4 transition-all group hover:shadow-lg">
+        <div className="overflow-hidden rounded-xl shadow-md mb-4">
           <Link href={`/search/${article.slug}`} target="_blank">
             <Image
               src={article.articleImage.url}
@@ -34,15 +32,28 @@ export default function VerticalCard({ article }: VerticalCardProps) {
           {article.categoryName && (
             <div className="mb-2">
               <Link href={`/categories/${article.categoryName.toLowerCase()}`}>
-                <Badge className="text-accent-foreground bg-accent rounded-[7px] p-1.5">
+                <Badge className="text-accent-foreground bg-accent rounded-[7px] p-1.5 dark:bg-neutral-700">
                   {article.categoryName}
                 </Badge>
               </Link>
             </div>
           )}
-          <h3 className="text-lg font-semibold dark:text-accent-foreground text-foreground leading-tight  h-12">
-            <Link href={`/search/${article.slug}`} target="_blank" className="hover:underline line-clamp-2">
-              {article.title}
+          <h3 className="text-lg font-semibold dark:text-accent-foreground text-foreground leading-tight h-12">
+            <Link 
+              href={`/search/${article.slug}`} 
+              target="_blank" 
+              className="line-clamp-2"
+            >
+              <span className="
+                bg-gradient-to-r from-accent to-primary 
+                bg-[length:0%_3px] 
+                bg-left-bottom 
+                bg-no-repeat 
+                transition-[background-size] duration-500 
+                group-hover:bg-[length:100%_3px]
+              ">
+                {article.title}
+              </span>
             </Link>
           </h3>
 
@@ -55,7 +66,7 @@ export default function VerticalCard({ article }: VerticalCardProps) {
                 <Link href={`/tags/${tag.toLowerCase()}`} key={tag}>
                   <Badge
                     variant="secondary"
-                    className="text-xs bg-primary cursor-pointer dark:text-accent-foreground hover:bg-neutral-800 dark:hover:bg-accent text-primary-foreground"
+                    className="text-xs bg-primary cursor-pointer dark:text-accent-foreground hover:bg-neutral-800 dark:bg-neutral-700 dark:hover:bg-accent text-primary-foreground"
                   >
                     {tag}
                   </Badge>
@@ -64,15 +75,15 @@ export default function VerticalCard({ article }: VerticalCardProps) {
             </div>
           )}
 
-          <div className="flex flex-wrap gap-4 items-center text-sm dark:text-accent-foreground text-foreground rounded-lg p-2  h-12">
+          <div className="flex flex-wrap gap-4 items-center text-sm dark:text-accent-foreground text-foreground rounded-lg p-2 h-12">
             <div className="flex items-center gap-x-2">
-              <UserIcon className="w-5 h-5 text-accent" />
+              <UserIcon className="w-5 h-5 text-accent dark:text-neutral-500" />
               <Link href={`/authors/${authorSlug}`} className="hover:underline">
                 {article.author.name || "Unknown Author"}
               </Link>
             </div>
             <div className="flex items-center gap-x-2">
-              <CalendarIcon className="w-5 h-5 text-accent" />
+              <CalendarIcon className="w-5 h-5 text-accent dark:text-neutral-500" />
               <span className="italic">
                 {new Date(article.date ?? "").toLocaleDateString("es-ES", {
                   day: "numeric",
@@ -82,25 +93,23 @@ export default function VerticalCard({ article }: VerticalCardProps) {
               </span>
             </div>
             <div className="flex items-center gap-x-2">
-              <WatchIcon className="w-5 h-5 text-accent" />
+              <WatchIcon className="w-5 h-5 text-accent dark:text-neutral-500" />
               <span>5 Min. To Read</span>
             </div>
           </div>
 
-          {/* Botón "Read more" ocupando ancho completo */}
           <div className="mt-4">
             <Link
               href={`/search/${article.slug}`}
               target="_blank"
-              className="inline-flex w-full justify-center items-center font-semibold text-primary-foreground bg-primary hover:bg-accent rounded-2xl px-4 py-2 transition-all duration-300 shadow-sm hover:shadow-md"
+              className="inline-flex w-full justify-center items-center font-semibold text-primary-foreground dark:bg-neutral-700 bg-primary dark:hover:bg-neutral-600 hover:bg-accent rounded-2xl px-4 py-2 transition-all duration-300 shadow-sm hover:shadow-md group/button" // Añadí group/button para el hover de la flecha
             >
               <span>Read more</span>
-              <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-2 size-4 transition-transform group-hover/button:translate-x-1" />
             </Link>
           </div>
         </div>
       </div>
     </div>
-
   );
 }

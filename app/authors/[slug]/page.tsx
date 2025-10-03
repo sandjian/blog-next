@@ -4,7 +4,6 @@ import { getArticlesByAuthorName } from "@/lib/api";
 import HorizontalCard from "@/components/Cards/HorizontalCard";
 import SkeletonHorizontalCard from "@/components/Cards/SkeletonHorizontalCard";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa";
 import Image from "next/image";
 
@@ -28,9 +27,9 @@ export default async function AuthorDetail({ params }: Params) {
     <main className="h-full w-full pb-10">
       <div className="w-full p-4">
         <Suspense fallback={<SkeletonAuthorProfile />}>
-          <div className="container mx-auto w-full max-w-6xl">
-            <div className="grid rounded-2xl container p-8 grid-cols-1 gap-6 justify-center items-center mx-auto lg:grid-cols-2 dark:bg-neutral-800 bg-neutral-200">
-              <div className="flex items-center md:justify-start justify-center">
+          <div className="w-full max-w-6xl mx-auto relative  rounded-2xl  bg-neutral-100  dark:bg-neutral-950/50 p-2 text-card-foreground md:max-h-[28rem] my-2 ">
+            <div className="grid grid-cols-1 md:grid-cols-5 h-full">
+              <div className="relative w-full lg:max-h-96 md:col-span-3 h-full rounded-2xl">
                 {author?.profilePicture?.url ? (
                   <Image
                     src={author.profilePicture.url}
@@ -43,7 +42,7 @@ export default async function AuthorDetail({ params }: Params) {
                   <p className="text-muted-foreground">No profile picture available</p>
                 )}
               </div>
-              <div className="flex gap-10 flex-col">
+              <div className="flex  flex-col justify-start p-6 md:p-8 md:col-span-2 h-full">
                 <div className="flex gap-4 flex-col">
                   <div>
                     <Badge variant="outline" className="text-primary-foreground bg-primary dark:border-primary">
@@ -51,47 +50,38 @@ export default async function AuthorDetail({ params }: Params) {
                     </Badge>
                   </div>
                   <div className="flex gap-2 flex-col">
-                    <h2 className="text-3xl lg:text-5xl max-w-xl text-left font-semibold text-foreground">
+                    <h2 className="text-3xl max-w-xl text-left font-bold text-foreground">
                       Hi! I am {author?.name || authorName}
                     </h2>
                     <p className="text-sm text-foreground max-w-xl text-left mt-3">
                       {author?.description || "No description available for this author."}
                     </p>
-                    <div className="flex justify-start items-center max-w-sm gap-2">
+                    <div className="flex justify-start items-center mt-6 max-w-sm gap-2">
                       {author?.socialLinks?.google && (
-                        <Button variant="outline" aria-label="Google profile" size="icon" asChild>
                           <a href={author.socialLinks.google} target="_blank" rel="noopener noreferrer">
-                            <FaGoogle className="text-[#DB4437] dark:text-accent" size={24} aria-hidden="true" />
+                            <FaGoogle className="" size={24} aria-hidden="true" />
                           </a>
-                        </Button>
                       )}
                       {author?.socialLinks?.facebook && (
-                        <Button variant="outline" aria-label="Facebook profile" size="icon" asChild>
                           <a href={author.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
-                            <FaFacebook className="text-[#1877f2] dark:text-accent" size={24} aria-hidden="true" />
+                            <FaFacebook className="" size={24} aria-hidden="true" />
                           </a>
-                        </Button>
                       )}
                       {author?.socialLinks?.twitter && (
-                        <Button variant="outline" aria-label="Twitter profile" size="icon" asChild>
                           <a href={author.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
-                            <FaTwitter className="text-[#14171a] dark:text-accent" size={24} aria-hidden="true" />
+                            <FaTwitter className="" size={24} aria-hidden="true" />
                           </a>
-                        </Button>
+                        
                       )}
                       {author?.socialLinks?.instagram && (
-                        <Button variant="outline" aria-label="Instagram profile" size="icon" asChild>
                           <a href={author.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
-                            <FaInstagram className="text-black dark:text-accent w-full" size={24} aria-hidden="true" />
+                            <FaInstagram className="" size={24} aria-hidden="true" />
                           </a>
-                        </Button>
                       )}
                       {author?.socialLinks?.github && (
-                        <Button variant="outline" aria-label="GitHub profile" size="icon" asChild>
                           <a href={author.socialLinks.github} target="_blank" rel="noopener noreferrer">
-                            <FaGithub className="text-black dark:text-accent" size={24} aria-hidden="true" />
+                            <FaGithub className="" size={24} aria-hidden="true" />
                           </a>
-                        </Button>
                       )}
                     </div>
                   </div>
@@ -118,7 +108,7 @@ export default async function AuthorDetail({ params }: Params) {
               </div>
             }
           >
-            <div className="grid gap-y-10 sm:gap-y-6 md:gap-y-12 lg:gap-y-2">
+            <div className="grid gap-y-10 sm:gap-y-6 md:gap-y-12 lg:gap-y-2 lg:grid-cols-2">
               {authorArticles.length > 0 ? (
                 authorArticles.map((article) => (
                   <HorizontalCard key={article.sys.id} article={article} />
@@ -134,7 +124,6 @@ export default async function AuthorDetail({ params }: Params) {
   );
 }
 
-// Skeleton para el perfil del autor
 function SkeletonAuthorProfile() {
   return (
     <div className="container mx-auto w-full max-w-6xl animate-pulse">

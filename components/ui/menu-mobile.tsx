@@ -53,24 +53,24 @@ export default function MenuMobile() {
           >
             <motion.div
               ref={menuRef}
-              className="w-1/2 max-w-xs h-full bg-accent p-4 shadow-lg shadow-orange-700 border-2 border-l border-orange-600/70 rounded-l-3xl flex flex-col"
+              className="w-1/2 max-w-xs h-full bg-gradient-to-r from-neutral-900 via-emerald-950 to-emerald-800 p-4 shadow shadow-neutral-600 rounded-l-3xl flex flex-col"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3 }}
             >
               <div className="flex justify-between items-center mb-8">
-                <Link href="/">
+                <Link href="/" className="mt-3">
                   <div className="flex justify-center items-center">
 
-                    <h2 className=" text-lg font-semibold text-accent-foreground tracking-tight">
+                    <h2 className=" text-xl font-semibold text-accent-foreground tracking-tight">
                       <span className="bg-primary p-1.5 rounded-xl text-accent-foreground">Blog</span> Connected
                     </h2>
                   </div>
                 </Link>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-accent-foreground"
+                  className="text-accent-foreground mt-3 text-2xl hover:scale-110 transition-all duration-300"
                 >
                   ✕
                 </button>
@@ -136,7 +136,7 @@ export default function MenuMobile() {
               <div className="border-t border-neutral-400 my-4"></div>
 
 
-              <div className="flex justify-center space-x-4 mt-4 mb-4">
+              <div className="flex justify-center items-end space-x-4 mt-4 mb-4  h-full">
                 {socialLinks.map((social, index) => (
                   <Link
                     href={social.href}

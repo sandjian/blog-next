@@ -1,4 +1,3 @@
-// components/FeaturedPosts.tsx
 import { Suspense } from "react";
 import { getLastThreeArticles } from "@/lib/api";
 import HorizontalCard from "../Cards/HorizontalCard";
@@ -12,7 +11,7 @@ export default async function FeaturedPosts() {
     <section className="w-full mx-auto py-8 px-4 ">
       <div className="my-10">
         <h2 className="text-3xl font-bold text-primary dark:text-white relative mb-8">
-          <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-white">Featured</span>
+          <span className="bg-primary dark:bg-accent mr-2 px-2 py-3 rounded-xl text-white">Featured</span>
           This Month
         </h2>
       </div>
@@ -32,8 +31,8 @@ export default async function FeaturedPosts() {
         </div>
       </Suspense>
       <Link href="/search">
-        <div className=" w-full mt-8 p-3 bg-accent flex justify-center items-center rounded-3xl hover:shadow-2xl hover:shadow-white/[0.1] hover:bg-primary  transition-all duration-300 ease-in-out hover:-translate-y-2">
-          <button className="text-primary-foreground font-semibold">See more</button>
+        <div className=" w-full mt-8 p-3 bg-accent dark:bg-neutral-800 rounded-xl flex justify-center items-center  hover:shadow-2xl hover:shadow-white/[0.1] hover:bg-primary  transition-all duration-300 ease-in-out hover:-translate-y-2">
+          <button className="text-primary-foreground font-semibold ">See more</button>
         </div>
       </Link>
     </section>

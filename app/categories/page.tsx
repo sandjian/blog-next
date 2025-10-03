@@ -10,23 +10,13 @@ export default async function CategoriesList() {
     return (
         <main className="relative w-full">
             <section className="mx-auto w-full max-w-7xl p-4">
-                <div className="z-20 bg-orange-800/60  mx-auto w-full max-w-7xl p-2 h-[28rem] rounded-2xl">
-                    <div className="h-full relative rounded-2xl bg-orange-800/90 isolate flex flex-col items-center justify-center space-y-4 text-center mx-auto w-full">
-                        <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-accent-foreground">
-                            Explore, Learn, and Share
-                        </h1>
-                        <p className="max-w-[900px] text-zinc-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-accent-foreground">
-                            Dive into our latest articles, discover new trends, and always stay ahead of the curve
-                        </p>
-
-                    </div>
-                </div>
+                
                 <div className="w-full h-full max-w-7xl mx-auto  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div className="col-span-1 w-full  mt-10 bg-neutral-100 dark:bg-neutral-900/70 rounded-2xl p-4 ">
 
                         <div className="mt-14 p-4">
-                            <h2 className="text-3xl font-bold text-foreground dark:text-accent-foreground relative mb-2">
-                                <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-accent-foreground">All</span>
+                            <h2 className="text-3xl font-bold text-primary dark:text-white relative mb-2">
+                                <span className="bg-primary dark:bg-accent mr-2 px-2 py-3 rounded-xl text-accent-foreground">All</span>
                                 Categories
                             </h2>
                         </div>

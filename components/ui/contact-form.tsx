@@ -10,9 +10,9 @@ export default function ContactForm() {
     <form
       action="#"
       method="POST"
-      className="mx-auto mt-16 max-w-7xl sm:mt-20 bg-stone-200 dark:bg-neutral-900 rounded-2xl p-8"
+      className="mx-auto  max-w-7xl  bg-stone-200 dark:bg-neutral-900 rounded-2xl p-4 mt-4 mb-4"
     >
-      <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
         <div>
           <label
             htmlFor="first-name"

@@ -11,8 +11,8 @@ export default function InstagramFeed() {
   return (
     <section className="w-full max-w-7xl mx-auto py-8 px-4 ">
       <div className="my-10">
-        <h2 className="text-3xl font-bold text-foreground  dark:text-accent-foreground relative mb-8">
-          <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-accent-foreground">Instagram</span>
+<h2 className="text-3xl font-bold text-primary dark:text-white relative mb-8">
+          <span className="bg-primary dark:bg-accent mr-2 px-2 py-3 rounded-xl text-accent-foreground">Instagram</span>
           Posts
         </h2>
       </div>
@@ -23,7 +23,7 @@ export default function InstagramFeed() {
             <Link href={"https://www.instagram.com/"} key={post.id}>
               <div
               
-                className="relative aspect-square rounded-2xl overflow-hidden"
+                className="relative aspect-square rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300"
               >
                 <Image
                   width={800}
@@ -32,7 +32,6 @@ export default function InstagramFeed() {
                   alt={post.caption}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 rounded-2xl bg-orange-500 bg-opacity-0 hover:bg-opacity-20 transition-opacity duration-300" />
               </div>
             </Link>
           ))}

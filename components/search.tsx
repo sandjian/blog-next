@@ -34,15 +34,15 @@ export default function Searcher({ posts }: Props) {
   };
 
   return (
-    <div className="mt-4 relative h-full w-full max-w-7xl rounded-2xl transform-gpu bg-stone-200 flex justify-center items-center mx-auto p-4 z-30">
+    <div className="mt-4 relative h-full w-full max-w-7xl rounded-2xl transform-gpu bg-stone-200 dark:bg-neutral-900 flex justify-center items-center mx-auto p-4 z-30">
       <div className="relative h-full w-full  mx-auto rounded-2xl">
-        <div className="flex items-center space-x-2 px-3 py-2 shadow-lg  bg-neutral-200  rounded-xl">
-          <SearchIcon className="w-5 h-5 text-primary dark:text-accent" />
+        <div className="flex items-center space-x-2 px-3 py-2 shadow-lg  bg-neutral-500/10  rounded-xl">
+          <SearchIcon className="w-5 h-5 text-primary dark:text-accent dark:text-neutral-500" />
           <input
             type="text"
             onChange={(e) => handleSearch(e.target.value)}
             placeholder="Search ..."
-            className="flex-1 bg-neutral-200  focus:outline-none text-foreground text-sm"
+            className="flex-1 bg-transparent  focus:outline-none text-foreground text-sm"
           />
         </div>
 

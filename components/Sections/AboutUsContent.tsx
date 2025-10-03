@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Zap } from "lucide-react"; 
+import { Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { WhyChooseUsAboutData } from "@/lib/constants";
@@ -64,7 +64,7 @@ const containerVariants = {
 
 export const WhyChooseUsSection = ({ data = WhyChooseUsAboutData }: WhyChooseUsProps) => {
   const { breakout, spotlightCards, images, achievementsSection } = data;
-  
+
 
   return (
     <section className="w-full py-32">
@@ -94,7 +94,7 @@ export const WhyChooseUsSection = ({ data = WhyChooseUsAboutData }: WhyChooseUsP
                   <motion.div variants={itemVariants} key={index}>
                     <div
                       className="magic-card gap-2 w-full h-full bg-accent flex flex-col items-center text-center p-6 rounded-xl shadow-sm"
-                      
+
                     >
                       <Zap className="size-6 text-white" />
                       <h4 className="text-xs lg:text-sm font-semibold mt-2 text-accent-foreground">
@@ -149,14 +149,8 @@ export const WhyChooseUsSection = ({ data = WhyChooseUsAboutData }: WhyChooseUsP
             <p className="max-w-screen-sm text-foreground dark:text-accent-foreground">
               {achievementsSection.description}
             </p>
-          
-        </motion.div>
-        
 
-
-        
-        
-        
+          </motion.div>
           <motion.div
             className="mt-10  grid grid-cols-2 md:grid-cols-4 gap-10 text-center"
             variants={containerVariants}
@@ -168,7 +162,7 @@ export const WhyChooseUsSection = ({ data = WhyChooseUsAboutData }: WhyChooseUsP
                 variants={itemVariants}
               >
                 <div className="h-full justify-center flex items-center">
-                  <p className="text-base text-foreground dark:text-accent-foreground">{item.label}</p> 
+                  <p className="text-base text-foreground dark:text-accent-foreground">{item.label}</p>
 
                 </div>
                 <span className="text-2xl text-foreground dark:text-accent-foreground font-semibold md:text-3xl">
@@ -215,7 +209,7 @@ export const WhyChooseUsSection = ({ data = WhyChooseUsAboutData }: WhyChooseUsP
                   <motion.div variants={itemVariants} key={index}>
                     <div
                       className="magic-card gap-2 w-full h-full bg-accent flex flex-col items-center text-center p-6 rounded-xl shadow-sm"
-                      
+
                     >
                       <Zap className="size-6 text-white" />
                       <h4 className="text-xs lg:text-sm font-semibold mt-2 text-accent-foreground">
@@ -225,7 +219,7 @@ export const WhyChooseUsSection = ({ data = WhyChooseUsAboutData }: WhyChooseUsP
                         {card.description}
                       </p>
                     </div>
-                    
+
                   </motion.div>
                 ))}
               </motion.div>
@@ -233,7 +227,7 @@ export const WhyChooseUsSection = ({ data = WhyChooseUsAboutData }: WhyChooseUsP
 
             <motion.div variants={itemVariants}>
               <Image
-                src={images.secondaryImage.src} 
+                src={images.secondaryImage.src}
                 alt={images.secondaryImage.alt}
                 width={500}
                 height={300}

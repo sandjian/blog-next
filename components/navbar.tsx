@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import MenuMobile from './ui/menu-mobile';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
@@ -22,7 +21,7 @@ export default async function Navbar() {
       <Link href="/">
         <div className="flex justify-center items-center">
           <h2 className=" text-2xl font-semibold text-primary dark:text-accent-foreground tracking-tight">
-            <span className="bg-primary p-1.5 rounded-2xl text-accent-foreground">Blog</span> Connected
+            <span className="bg-primary dark:bg-accent p-1.5 rounded-2xl text-accent-foreground">Blog</span> Connected
           </h2>
         </div>
       </Link>
@@ -39,10 +38,10 @@ export default async function Navbar() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground dark:text-neutral-300 hover:text-accent dark:hover:text-white transition-all"
+              className="text-foreground  transition-all duration-300 hover:scale-110"
               aria-label={label}
             >
-              <Icon size={15} />
+              <Icon size={18} />
             </Link>
           ))}
         </div>

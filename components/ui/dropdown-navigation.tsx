@@ -46,7 +46,7 @@ export default function Navigation({ categories }: NavigationProps) {
                 className={`text-sm py-1.5 px-4 flex cursor-pointer group transition-colors duration-300 items-center justify-center gap-1 relative ${
                   pathname === navItem.link
                     ? "text-accent dark:text-accent-foreground font-semibold "
-                    : "text-foreground dark:text-neutral-300 dark:hover:text-accent-foreground hover:text-accent"
+                    : "text-foreground dark:text-neutral-300 dark:hover:text-accent-foreground hover:text-accent hover:font-semibold"
                 }`}
                 onMouseEnter={() => setIsHover(navItem.id)}
                 onMouseLeave={() => setIsHover(null)}
@@ -57,8 +57,8 @@ export default function Navigation({ categories }: NavigationProps) {
               <button
                 className={`focus-visible:outline-none text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-2xl text-md py-1.5 px-4 flex cursor-pointer group transition-colors duration-300 items-center justify-center gap-1 relative ${
                   openMenu === navItem.label
-                    ? "text-accent dark:text-accent-foreground"
-                    : "text-foreground dark:text-neutral-300 dark:hover:text-accent-foreground hover:text-accent"
+                    ? "text-accent dark:text-accent-foreground hover:font-semibold"
+                    : "text-foreground dark:text-neutral-300 dark:hover:text-accent-foreground hover:text-accent hover:font-semibold"
                 }`}
                 onMouseEnter={() => setIsHover(navItem.id)}
                 onMouseLeave={() => setIsHover(null)}

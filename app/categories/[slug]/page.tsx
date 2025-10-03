@@ -22,8 +22,8 @@ export default async function CategoryPage({ params }: Params) {
     <section className="w-full px-4 py-10 ">
       <div className="w-full mx-auto py-8 px-4 mb-8 max-w-7xl rounded-2xl bg-neutral-100 dark:bg-neutral-950/50">
         <div className="mt-20 mb-10">
-          <h2 className="text-3xl font-bold text-foreground dark:text-accent-foreground relative mb-8">
-            <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-accent-foreground">Search for</span>
+<h2 className="text-3xl font-bold text-primary dark:text-white relative mb-8">
+          <span className="bg-primary dark:bg-accent mr-2 px-2 py-3 rounded-xl text-accent-foreground">Search for</span>
             {categoryName}
           </h2>
         </div>

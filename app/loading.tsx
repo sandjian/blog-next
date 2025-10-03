@@ -1,4 +1,3 @@
-// app/loading.tsx
 export default function Loading() {
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-neutral-200 dark:bg-neutral-800" role="status" aria-label="Loading">

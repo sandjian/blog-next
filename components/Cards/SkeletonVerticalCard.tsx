@@ -1,4 +1,3 @@
-// components/Cards/SkeletonVerticalCard.tsx
 export default function SkeletonVerticalCard() {
     return (
       <div className="border-0 bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-2xl p-4 animate-pulse">

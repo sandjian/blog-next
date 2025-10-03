@@ -8,8 +8,8 @@ export default async function TopCategories() {
   return (
     <section className="w-full max-w-7xl mx-auto py-8 px-4">
       <div className="my-10">
-        <h2 className="text-3xl font-bold text-foreground dark:text-accent-foreground relative mb-8">
-          <span className="bg-primary mr-2 px-2 py-3 rounded-xl text-accent-foreground">Top 5</span>
+        <h2 className="text-3xl font-bold text-primary dark:text-white relative mb-8">
+          <span className="bg-primary dark:bg-accent mr-2 px-2 py-3 rounded-xl text-accent-foreground">Top 5</span>
           Categories
         </h2>
       </div>
@@ -23,7 +23,7 @@ export default async function TopCategories() {
         <div className="">
           {topCategories.map((category) => (
             <Link href={`/categories/${category.name}`} key={category.name}>
-              
+
               <div className=" mt-3 p-1  hover:translate-x-2 bg-stone-200/50 dark:bg-neutral-900/50 transition-all duration-300 ease-in-out rounded-2xl">
                 <div className='grid grid-cols-2 p-4 rounded-2xl bg-stone-200 dark:bg-neutral-900 dark:hover:bg-neutral-700/70 transition-all duration-300 hover:bg-neutral-400/40'>
 
@@ -43,8 +43,8 @@ export default async function TopCategories() {
         </div>
       </div>
       <Link href={"/categories"}>
-        <div className="w-full mt-6 p-3 hover:bg-primary flex justify-center items-center rounded-full bg-accent transition-all duration-300 ease-in-out hover:-translate-y-2">
-          <button className="text-primary-foreground dark:text-accent-foreground font-semibold">See more</button>
+        <div className="w-full mt-6 p-3 hover:bg-primary flex justify-center items-center rounded-xl dark:bg-neutral-800 bg-accent transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/[0.1]">
+          <button className="text-primary-foreground font-semibold">See more</button>
         </div>
       </Link>
     </section>
